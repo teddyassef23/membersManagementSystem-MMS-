@@ -1,21 +1,17 @@
-
-
 {
-  "name": "MembersManagementSystem",
-  "version": "1.0.1",
-  "description": "Mongoose back-end project - Develop",
-  "main": "index.js",
-  "license": "MIT",
-  "scripts": {
-    "start": "node server",
-    "dev": "nodemon server",
-    "seed": "node utils/seed"
-  },
+  "name": "membersManagementSystem-mms-",
+  "version": "1.0.0",
+  "description": "Member Management and payment collection ",
+  "main": "server.js",
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^7.0.2"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.9"
-  }
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
 }

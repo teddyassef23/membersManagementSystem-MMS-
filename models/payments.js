@@ -1,18 +1,11 @@
-const mongoose = require('mongoose');
-const { INTEGER } = require('sequelize');
+const { Schema } = require('mongoose');
+const membershipElectionSchema = require('./membershipElection')
 
-const payments = new mongoose.Schema({
-    street1: {
-        type: String,
-        required: true
-    },
-    membership_fee_election_id: {
-        type: String,
-        required: false
-    },
+const paymentSchema = new Schema({
+  
     amount: {
-        type: INTEGER,
-        required: false
+        type: Number,
+        required: true
     },
     month: {
         type: String,
@@ -22,24 +15,24 @@ const payments = new mongoose.Schema({
         type: String,
         required: true
     },
-    payment_type: {
+    paymentMethod: {
         type: String,
-        required: true
+        required: false
     },
-    created_date: {
-        type: date,
+    paymentDate: {
+        type: Date,
         required: true,
         default: Date.now,
     },
-    members: [membersSchema],
-    
-    students: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: 'members',
-        },
-      ],
+    createdDate: {
+        type: Date,
+        required: true,
+        default: Date.now,
+    },
+    membershipElection: membershipElectionSchema,
+  
 
 });
 
-module.exports = payments;
+
+module.exports = paymentSchema;

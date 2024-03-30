@@ -1,40 +1,40 @@
 
 
 const mongoose = require('mongoose');
-const { INTEGER } = require('sequelize');
 
-const address = new mongoose.Schema({
-    street1: {
+const addressSchema = new mongoose.Schema({
+    street: {
         type: String,
         required: true
     },
     street2: {
         type: String,
-        required: true
+        required: false
     },
     city: {
         type: String,
         required: true
     },
-    country: {
+    state: {
         type: String,
-        required: false
+        required: true
     },
     zip: {
-        type: INTEGER,
-        required: false
+        type: Number,
+        required: true
     },
     country: {
         type: String,
-        required: false
+        required: true
     },
-    students: [
-        {
-          type: Schema.Types.ObjectId,
-          ref: 'members',
-        },
-      ],
+    created_date: {
+        type: Date,
+        required: true,
+        default: Date.now,
+    },
+    
 
 });
 
-module.exports = address;
+
+module.exports = addressSchema;

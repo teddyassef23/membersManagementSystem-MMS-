@@ -1,3 +1,7 @@
-const mms = require('./members');
+const Member = require('./members');
+const Payment = require('./payments');
 
-module.exports = { address, members, membersFamily, payments, membershipFeeElection };
+module.exports = { Member, Payment } ;
+
+
+// address, , membersFamily,membershipFeeElectionpayment
