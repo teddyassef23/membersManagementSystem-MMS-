@@ -2,7 +2,6 @@ const Payment  = require('./../models/payments');
 
 
 module.exports = {
-    // Get all payments
     async getPayments(req, res) {
      
         const payments = await Payment.find();
@@ -12,7 +11,6 @@ module.exports = {
     },
     
     
-    // Get payment bi ID
     async getSinglePayment(req, res) {
       try {
         const payments = await this.Payment.findOne({ _id: req.params.paymentsId });
@@ -21,7 +19,6 @@ module.exports = {
         res.status(500).json(err);
       }
     },
-    // create a new user
     async createPayment(req, res) {
       try {
         const payment = await Payment.create(req.body);

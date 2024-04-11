@@ -1,10 +1,7 @@
 const Member  = require('./../models/members');
 const Payment  = require('./../models/payments');
-// const membersFamily  = require('./../models/membersFamily');
-// const address  = require('./../models/address');
 
 module.exports = {
-  // Get all members
   async getMembers(req, res) {
    
       const members = await Member.find();
@@ -12,7 +9,6 @@ module.exports = {
   },
   
   
-  // Get member bi ID
   async getSingleMember(req, res) {
     try {
       const members = await Member.findOne({ _id: req.params.memberId });
@@ -21,7 +17,6 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // create a new user
   async createMember(req, res) {
     try {
       const member = await Member.create(req.body);
@@ -31,17 +26,6 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-//++++++++++++++++++++++++++++++++++
-  // var id = req.params.id;
-  // var id2 = req.params.id2;
-  // Insurance.update({_id:id, 'plan._id':id2}, {$push : 
-  //     {'plan.$.rate_card' : req.body}
-  // }, {upsert: true}, function(err, docs){
-  // res.json(docs);
-  // console.log(docs);
-  // });
-//+==================================
-
 
   async addPayment(req, res) {
    
