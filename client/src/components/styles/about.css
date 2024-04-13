@@ -1,0 +1,33 @@
+.about-container {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .about-text {
+    flex: 1;
+  }
+  
+  .about-image {
+    margin-left: 20px; 
+  }
+  
+  .about-image img {
+    max-width: 100%;
+    max-height: 300px; 
+    height: auto;
+  }
+
+.image-container {
+    text-align: center; 
+  }
+  
+
+  .image-container img {
+    margin: 0 10px; 
+  }
+  
+  .about-text h2 {
+    margin-bottom: 20px;
+  }
+  
+  

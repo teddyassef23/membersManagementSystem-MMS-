@@ -1,0 +1,36 @@
+[
+    {
+      "id": 1,
+      "name": "Weather Dashboard",
+      "image": "https://github.com/Pilar1936/weather-app/raw/main/images/scrhoo.PNG",
+      "github": "https://github.com/Pilar1936/weather-app",
+      "deploy": "",
+      "topics": "moment.js, javascript, jQuery, localStorage, API"
+    },
+    {
+      "id": 2,
+      "name": "Text Editor",
+      "image": "https://github.com/Pilar1936/Text-Editor/raw/main/image/Snip%20-%20J.A.T.E%20and%204%20more%20pages%20-%20Personal%20-%20Microsoft%20Edge.png",
+      "github": "https://github.com/Pilar1936/Text-Editor",
+      "deploy": "https://pwa-budget-traker.herokuapp.com/",
+      "topics": "In this text editing project, you will be able to store data in an IndexedDB database. You'll use a package called idb, which is a lightweight wrapper around the IndexedDB API."
+    },
+    {
+      "id": 3,
+      "name": "Work Day Scheduler",
+      "image": "https://github.com/Pilar1936/Work--Day--Scheduler/raw/main/assets/images/Work%20Day%20Scheduler.gif",
+      "github": "https://github.com/Pilar1936/Work--Day--Scheduler/tree/main",
+      "deploy": "",
+      "topics": "HTML5, CSS, Javascript, JQuery, Bootstrap"
+    },
+    {
+        "id": 4,
+        "name": "National Parks and local birds",
+        "image": "https://github.com/Pilar1936/07-project-1/raw/main/assets/images/ezgif.com-video-to-gif-converted.gif",
+        "github": "https://github.com/Pilar1936/07-project-1",
+        "deploy": "https://pilar1936.github.io/07-project-1/",
+        "topics": "HTML5, CSS, Javascript,Bootstrap and Api"
+      }      
+  ]
+  
+
