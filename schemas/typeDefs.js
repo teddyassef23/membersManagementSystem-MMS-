@@ -20,6 +20,7 @@ const typeDefs = gql`
     lastName: String!
     baptismalName: String
     gender: String!
+    relationship:String
     startDate: String!
     endDate: String
     email: String
@@ -40,6 +41,7 @@ const typeDefs = gql`
     lastName: String!
     baptismalName: String
     gender: String!
+    relationship: string
     startDate: String!
     endDate: String
     email: String
