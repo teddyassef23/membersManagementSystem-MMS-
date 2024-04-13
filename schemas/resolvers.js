@@ -1,4 +1,4 @@
-const { Member, MemberFamily, Payment } = require('../models');
+const { Member, Payment } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -22,6 +22,22 @@ const resolvers = {
     }
   },
   Mutation: {
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError('Invalid email or password!');
+      }
+
+      const correctPassword = await user.isCorrectPassword(password);
+
+      if (!correctPassword) {
+        throw new AuthenticationError('Invalid email or password!');
+      }
+
+      const token = signToken({ email: user.email, _id: user._id });
+      return { token, user };
+    },
     addMember: async (parent, { memberInput }) => {
       try {
         return await Member.create(memberInput);
@@ -47,14 +63,16 @@ const resolvers = {
       }
     }
   },
-  Member : {payments: async (parent)=> {try{ 
-    return await payment.find ({_id: {$in:parent.payments}});
+  Member: {
+    payments: async (parent) => {
+      try {
+        return await Payment.find({ _id: { $in: parent.payments } });
       } catch (error) {
-        console.error('Error deleting member:', error);
-        throw new Error('Failed to delete member.');
+        console.error('Error fetching payments for member:', error);
+        throw new Error('Failed to fetch payments for member.');
       }
     }
+  }
+};
 
-    
-  }};
-  module.exports= resolvers;
+module.exports = resolvers;
