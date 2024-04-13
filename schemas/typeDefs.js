@@ -10,8 +10,14 @@ const typeDefs = gql`
     addMember(memberInput: MemberInput!): Member
     updateMember(memberId: ID!, memberInput: MemberInput!): Member
     deleteMember(memberId: ID!): Member
+    login(email: String!, password: String!): AuthPayload!
   }
 
+  type AuthPayload {
+    token: String!
+    user: Member!
+  }
+  
   type Member {
     _id: ID!
     memberNumber: String!
@@ -20,7 +26,6 @@ const typeDefs = gql`
     lastName: String!
     baptismalName: String
     gender: String!
-    relationship:String
     startDate: String!
     endDate: String
     email: String
@@ -41,7 +46,6 @@ const typeDefs = gql`
     lastName: String!
     baptismalName: String
     gender: String!
-    relationship: string
     startDate: String!
     endDate: String
     email: String
