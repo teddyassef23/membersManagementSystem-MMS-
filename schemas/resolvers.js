@@ -1,6 +1,5 @@
 const { Member } = require('../models');
 const User = require('../models/User')
-// const Payment = require('../models/payments')
 
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
