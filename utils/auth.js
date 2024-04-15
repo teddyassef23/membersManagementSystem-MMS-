@@ -15,6 +15,7 @@ module.exports = {
     
 
       const authorizationHeader = req.headers.authorization || '';
+      console.log (authorizationHeader);
       const token = authorizationHeader.split(' ')[1]; 
       console.log(token)
     if (!token) {

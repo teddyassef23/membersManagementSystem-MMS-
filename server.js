@@ -33,7 +33,7 @@ async function startServer() {
   app.use(express.urlencoded({ extended: true })); 
   app.use(cors()); 
 
-  await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/googlebooks', {
+  await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/members', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
