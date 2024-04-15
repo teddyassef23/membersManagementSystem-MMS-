@@ -4,6 +4,8 @@
 
 import "./MemberForm.css";
 import { React, useState } from "react";
+import Family from "./../family/Family.jsx";
+import { Divider } from 'antd';
 
 function MemberForm() {
   const [firstName, setFirstName] = useState("");
@@ -70,8 +72,9 @@ function MemberForm() {
 
     <div className="App ">
       <h1>New Member Registration </h1>
-      
+      <div className="new-line"></div>
       <fieldset>
+        
         <form action="#" method="get">
           <section className="container ">
             
@@ -86,7 +89,7 @@ function MemberForm() {
               placeholder="Enter First Name"
               required
             />
-            <label for="middlename">Middle name*</label>
+            <label for="middlename">Middle name</label>
             <input
               type="text"
               name="middlename"
@@ -96,7 +99,7 @@ function MemberForm() {
               placeholder="Enter Middle Name"
               
             />
-            <label for="lastname">Last Name*</label>
+            <label for="lastname">Last Name</label>
             <input
               type="text"
               name="lastname"
@@ -107,7 +110,7 @@ function MemberForm() {
               required
             />
 
-           <label for="email">Enter Email* </label>
+           <label for="email">Enter Email </label>
            <input
               type="email"
               name="email"
@@ -152,26 +155,19 @@ function MemberForm() {
             required
           /> */}
 
-<hr  style={{
-    color: '#000000',
-    backgroundColor: '#000000',
-    height: .5,
-    borderColor : '#000000'
-}}/>
+<div className="new-line"></div>
 
 
+<Divider></Divider>
 
 
-
-
-<label for="gender">Gender*</label>
+<label for="gender">Gender</label>
           <input
             type="radio"
             name="gender"
             value="male"
             id="male"
-            checked={gender === "male"}
-            onChange={(e) => setGender(e.target.value)}
+            
           />
           Male
           <input
@@ -196,46 +192,51 @@ function MemberForm() {
           <input
             type="checkbox"
             name="lang"
-            id="english"
-            checked={subjects.english === true}
-            onChange={(e) => handleSubjectChange("english")}
+            id="lan"
+        
+            
           />
           English
           <input
             type="checkbox"
             name="lang"
-            id="maths"
+            id="english"
             checked={subjects.maths === true}
-            onChange={(e) => handleSubjectChange("maths")}
+            onChange={(e) => handleSubjectChange("english")}
           />
           Amharic
           <input
             type="checkbox"
             name="lang"
-            id="physics"
+            id="amharic"
             checked={subjects.physics === true}
-            onChange={(e) => handleSubjectChange("physics")}
+            onChange={(e) => handleSubjectChange("amharic")}
           />
           Tigeria
           <input
             type="checkbox"
             name="lang"
-            id="maths"
+            id="tigeria"
             checked={subjects.maths === true}
-            onChange={(e) => handleSubjectChange("maths")}
+            onChange={(e) => handleSubjectChange("tigeria")}
           />
           Oromo
-          <label for="file">Upload Resume*</label>
           <input
-            type="file"
-            name="file"
-            id="file"
-            onChange={(e) => setResume(e.target.files[0])}
-            placeholder="Enter Upload File"
-            required
+            type="checkbox"
+            name="lang"
+            id="oromo"
+            checked={subjects.maths === true}
+            onChange={(e) => handleSubjectChange("oromo")}
           />
+         
 
-          
+
+          <div className="new-line"></div>
+          <Divider></Divider>
+             <h1>Demandant or/and list of Member Family</h1> 
+      
+
+           <Family/>
           <button type="reset" value="reset" onClick={() => handleReset()}>
             Reset
           </button>
@@ -244,6 +245,7 @@ function MemberForm() {
           </button>
         </form>
       </fieldset>
+     
     </div>
   );
 }

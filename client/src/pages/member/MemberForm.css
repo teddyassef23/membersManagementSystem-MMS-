@@ -105,3 +105,14 @@ textarea {
   .Column {
     flex-direction: column;
   }
+  .border{
+    margin: 5px;
+    border-right: solid;
+    border-color: #555;
+    border-block-start-style: dashed;
+  }
+
+  .new-line {
+    padding: 20px;
+    white-space: pre-line;
+  }

@@ -2,17 +2,51 @@ import React from 'react';
 import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import MemberForm from './Form'
-const { Header, Content, Footer, Sider } = Layout;
-const items1 = ['1', '2', '3'].map((key) => ({
+const {  Content, Footer, Sider } = Layout;
+
+const items1 = ['Add new Member', 'Modify Member Information', 'Cancel Menbership'].map((key) => ({
   key,
   label: `nav ${key}`,
 }));
+
+
+
+
+
 const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
-  const key = String(index + 1);
+  const key = [
+                { name:'Member'},
+                {name: 'Payment'},
+                {name: 'Setting'}
+              ];
+  // const Array = [
+  //               { 
+  //                 name:'Member',
+  //                 id: 1
+  //               },
+  //               {
+  //                 name: 'Payment',
+  //                 id: 2
+  //               },
+    //               {
+  //                 name: 'Payment',
+  //                 id: 3
+  //               },
+  //               {
+  //                 name: 'Setting',
+  //                 id: 4
+  //               }
+  //             ];
+
+  items1.map((menu)=>{
+    console.log(menu)
+    
+    })
   return {
-    key: `sub${key}`,
+    key: `Side1 menu`,
     icon: React.createElement(icon),
-    label: `subnav ${key}`,
+    label: `Side menu`,
+
     children: new Array(4).fill(null).map((_, j) => {
       const subKey = index * 4 + j + 1;
       return {
@@ -21,31 +55,21 @@ const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, i
       };
     }),
   };
+
+  
 });
+
+
+
+
+
 const Member = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   return (
     <Layout>
-      <Header
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        <div className="demo-logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={['2']}
-          items={items1}
-          style={{
-            flex: 1,
-            minWidth: 0,
-          }}
-        />
-      </Header>
+
       <Content
         style={{
           padding: '0 48px',
@@ -56,9 +80,7 @@ const Member = () => {
             margin: '16px 0',
           }}
         >
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
+          
         </Breadcrumb>
         <Layout
           style={{
@@ -100,7 +122,7 @@ const Member = () => {
           textAlign: 'center',
         }}
       >
-        Ant Design ©{new Date().getFullYear()} Created by Ant UED
+        MofU Design ©{new Date().getFullYear()} Created by Group4
       </Footer>
     </Layout>
   );

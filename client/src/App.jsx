@@ -6,9 +6,9 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-// import { Outlet } from 'react-router-dom';
-// import { Outlet } from 'react-router-dom';
-import Member from './pages/member';
+import { Outlet } from 'react-router-dom';
+
+
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -43,7 +43,7 @@ function App() {
       <div className="flex-column justify-flex-start min-100-vh">
         <Header />
         <div className="container">
-          <Member/>{/* <Outlet /> */}
+          <Outlet />
         </div>
         <Footer />
       </div>
