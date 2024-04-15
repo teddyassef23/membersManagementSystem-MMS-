@@ -1,5 +1,7 @@
-const { Member, Payment } = require('../models');
+const { Member } = require('../models');
 const User = require('../models/User')
+// const Payment = require('../models/payments')
+
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -53,10 +55,11 @@ const resolvers = {
       try {
         return await Member.create(memberInput);
       } catch (error) {
-        console.error('Error creating member:', error);
+        console.log('Error creating member:', error);
         throw new Error('Failed to create member.');
       }
     },
+    
     updateMember: async (parent, { memberId, memberInput }) => {
       try {
         return await Member.findByIdAndUpdate(memberId, memberInput, { new: true });
@@ -75,14 +78,17 @@ const resolvers = {
     }
   },
   Member: {
-    payments: async (parent) => {
-      try {
-        return await Payment.find({ _id: { $in: parent.payments } });
-      } catch (error) {
-        console.error('Error fetching payments for member:', error);
-        throw new Error('Failed to fetch payments for member.');
-      }
-    }
+    // payments: async (parent) => {
+    //   try {
+    //     // Fetch payments associated with the member
+
+    //     const payments = await Payment.findByMemberId({ memberId: parent._id }); // Assuming memberId is the field that links payments to members
+    //     return payments;
+    //   } catch (error) {
+    //     console.error('Error fetching payments for member:', error);
+    //     throw new Error('Failed to fetch payments for member.');
+    //   }
+    // }
   }
 };
 
