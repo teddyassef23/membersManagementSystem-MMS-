@@ -47,7 +47,6 @@ const typeDefs = gql`
     membershipElections: [MembershipElection]
     addresses: [Address]
     memberFamilies: [MemberFamily]
-    payments: [Payment]
   }
 
   input MemberInput {

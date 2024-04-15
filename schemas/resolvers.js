@@ -1,6 +1,5 @@
 const { Member } = require('../models');
 const User = require('../models/User')
-// const Payment = require('../models/payments')
 
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
@@ -77,19 +76,7 @@ const resolvers = {
       }
     }
   },
-  Member: {
-    // payments: async (parent) => {
-    //   try {
-    //     // Fetch payments associated with the member
 
-    //     const payments = await Payment.findByMemberId({ memberId: parent._id }); // Assuming memberId is the field that links payments to members
-    //     return payments;
-    //   } catch (error) {
-    //     console.error('Error fetching payments for member:', error);
-    //     throw new Error('Failed to fetch payments for member.');
-    //   }
-    // }
-  }
 };
 
 module.exports = resolvers;
