@@ -7,8 +7,9 @@ module.exports = {
 
    
       const operationName = req.body.operationName
+      console.log(operationName)
       
-      if (operationName === 'addUser' || operationName === 'loginUser' ) {
+      if (operationName === 'addUser' || operationName === 'login' ) {
         return next();
       }
     

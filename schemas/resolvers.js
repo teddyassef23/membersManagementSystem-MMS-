@@ -1,4 +1,5 @@
 const { Member, Payment } = require('../models');
+const User = require('../models/User')
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -22,6 +23,16 @@ const resolvers = {
     }
   },
   Mutation: {
+    addUser: async (parent, { username, email, password }) => {
+      try {
+        const user = await User.create({ username, email, password });
+        const token = signToken({ username, email, _id: user._id });
+        return { token, user };
+      } catch (error) {
+        console.error('Error creating user:', error);
+        throw new Error('Failed to create user.');
+      }
+    },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 

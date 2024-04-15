@@ -7,6 +7,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    addUser(username: String!, email: String!, password: String!): Auth
+
     addMember(memberInput: MemberInput!): Member
     updateMember(memberId: ID!, memberInput: MemberInput!): Member
     deleteMember(memberId: ID!): Member
@@ -17,7 +19,16 @@ const typeDefs = gql`
     token: String!
     user: Member!
   }
-  
+  type User {
+    _id: ID
+    username: String
+    email: String
+  }
+
+  type Auth {
+    token: String
+    user: User
+  }
   type Member {
     _id: ID!
     memberNumber: String!
