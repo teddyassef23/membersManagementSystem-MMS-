@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@ant-design/icons':
+    specifier: ^5.3.6
+    version: 5.3.6(react-dom@18.2.0)(react@18.2.0)
   '@chakra-ui/icons':
     specifier: ^2.1.1
     version: 2.1.1(@chakra-ui/system@2.6.2)(react@18.2.0)
@@ -23,6 +26,9 @@ dependencies:
   framer-motion:
     specifier: ^11.0.25
     version: 11.0.25(react-dom@18.2.0)(react@18.2.0)
+  moment-timezone:
+    specifier: ^0.5.43
+    version: 0.5.45
 
 devDependencies:
   concurrently:
@@ -1877,6 +1883,16 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
+    dev: false
+
+  /moment-timezone@0.5.45:
+    resolution: {integrity: sha512-HIWmqA86KcmCAhnMAN0wuDOARV/525R2+lOLotuGFzn4HO+FH+/645z2wx0Dt3iDv6/p61SIvKnDstISainhLQ==}
+    dependencies:
+      moment: 2.30.1
+    dev: false
+
+  /moment@2.30.1:
+    resolution: {integrity: sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==}
     dev: false
 
   /object-assign@4.1.1:
