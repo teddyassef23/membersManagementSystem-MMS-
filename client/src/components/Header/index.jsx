@@ -21,18 +21,17 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg="light" expand="lg" className={`justify-content-center`} style={{ color: '#333' }}>
-        <Container fluid> {/* Use fluid to make the container full width */}
+      <Navbar expand="md" className="navbar" style={{ backgroundColor: 'lightgrey', color: '#333' }}>
+        <Container>
           <Navbar.Brand as={Link} to="/">
             <img src={logo} alt="Logo" height="30" className="d-inline-block align-top" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbar-nav" onClick={toggleMenu} />
-          <Navbar.Collapse id="navbar-nav" className={`justify-content-center ${isOpen ? 'show' : ''}`}>
-            <ul className="navbar-nav ml-auto"> {/* Added ml-auto to push menu items to the right */}
+          <Navbar.Collapse id="navbar-nav" className={`justify-content-md-end${isOpen ? ' show' : ''}`}>
+            <ul className="navbar-nav">
               <li className="nav-item">
                 <Link className="nav-link" to="/" onClick={toggleMenu}>Home</Link>
               </li>
-              {/* Aquí puedes agregar más elementos del menú según sea necesario */}
               <li className="nav-item">
                 <Link className="nav-link" to="/login" onClick={toggleMenu}>Login</Link>
               </li>
