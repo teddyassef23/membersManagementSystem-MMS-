@@ -1,43 +1,47 @@
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import { Navbar, Container } from 'react-bootstrap'; 
+import logo from '../../assets/logo.png'; 
 import Auth from '../../utils/auth';
+import '../css/navbar.css'; 
 
 const Header = () => {
-  const logout = (event) => {
+  const [isOpen, setIsOpen] = useState(false); // Estado para controlar si el menú está abierto o cerrado
+
+  // Función para alternar entre abrir y cerrar el menú
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  // Función para manejar el cierre de sesión
+  const handleLogout = (event) => {
     event.preventDefault();
     Auth.logout();
   };
+
   return (
-    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
-        <div>
-          <Link className="text-light" to="/">
-            <h1 className="m-0">Tech Thoughts</h1>
-          </Link>
-          <p className="m-0">Get into the mind of a programmer.</p>
-        </div>
-        <div>
-          {Auth.loggedIn() ? (
-            <>
-              <Link className="btn btn-lg btn-info m-2" to="/me">
-                {Auth.getProfile().data.username}'s profile
-              </Link>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
-                Logout
-              </button>
-            </>
-          ) : (
-            <>
-              <Link className="btn btn-lg btn-info m-2" to="/login">
-                Login
-              </Link>
-              <Link className="btn btn-lg btn-light m-2" to="/signup">
-                Signup
-              </Link>
-            </>
-          )}
-        </div>
-      </div>
+    <header>
+      <Navbar expand="md" className="navbar" style={{ backgroundColor: 'lightgrey', color: '#333' }}>
+        <Container>
+          <Navbar.Brand as={Link} to="/">
+            <img src={logo} alt="Logo" height="30" className="d-inline-block align-top" />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbar-nav" onClick={toggleMenu} />
+          <Navbar.Collapse id="navbar-nav" className={`justify-content-md-end${isOpen ? ' show' : ''}`}>
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link className="nav-link" to="/" onClick={toggleMenu}>Home</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login" onClick={toggleMenu}>Login</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/logout" onClick={handleLogout}>Logout</Link>
+              </li>
+            </ul>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </header>
   );
 };
