@@ -1,36 +1,33 @@
-import { useQuery } from '@apollo/client';
+import React from 'react';
+import Particle from '../components/Particle';
+import backgroundImage from '../assets/member.png'; 
+import '../components/css/home.css'; 
+import Footer from '../components/Footer/index'; 
 
-import ThoughtList from '../components/ThoughtList';
-import ThoughtForm from '../components/ThoughtForm';
 
-import { QUERY_THOUGHTS } from '../utils/queries';
-
-const Home = () => {
-  const { loading, data } = useQuery(QUERY_THOUGHTS);
-  const thoughts = data?.thoughts || [];
-
+function HomePage() {
   return (
-    <main>
-      <div className="flex-row justify-center">
-        <div
-          className="col-12 col-md-10 mb-3 p-3"
-          style={{ border: '1px dotted #1a1a1a' }}
-        >
-          <ThoughtForm />
-        </div>
-        <div className="col-12 col-md-8 mb-3">
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <ThoughtList
-              thoughts={thoughts}
-              title="Some Feed for Thought(s)..."
-            />
-          )}
+    <div className="background-container" style={{
+      backgroundImage: `url(${backgroundImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      height: '100vh',
+      position: 'relative', 
+      overflow: 'hidden', 
+    }}>
+      <Particle />
+      <div className="container d-flex justify-content-center align-items-center vh-100">
+        <div className="text-center">
+          <h1 className="display-4 animated-text">Welcome👋</h1>
+          <p className="animated-paragraph">TO DEBRE MIHRET ST. MICHAEL ETHIOPIAN ORTHODOX </p>
+          <p className="animated-paragraph">TEWAHEDO CHURCH OF ILLINOIS</p>
         </div>
       </div>
-    </main>
+      <div className="footer-space"></div> {/* Espacio para separar del footer */}
+      <Footer />
+    </div>
   );
-};
+}
 
-export default Home;
+export default HomePage;
+
