@@ -4,7 +4,7 @@ import { Navbar, Container } from 'react-bootstrap';
 
 import Baner from './../../assets/logoo.png'
 import Auth from '../../utils/auth';
-import './header.css'
+import '../css/header.css'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false); // Estado para controlar si el menú está abierto o cerrado
