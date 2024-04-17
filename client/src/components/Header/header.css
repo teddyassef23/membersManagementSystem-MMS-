@@ -1,23 +1,4 @@
-.baner{
-    height:110px;
-    width: 350%;
-    margin-left: -290px;
-    margin-bottom: -16px;
+.navbar-nav .nav-link:hover {
+    color: orange;
+  }
   
-    
-}
-.logo{
-    margin-left: -120px;
-}
-.logout{
-    margin-left: 700px;
-    margin-top: 10px;
-    margin-bottom: -70px;
-   
- 
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    font-style: oblique;
-    font-size: large;
-    color: brown;
-
-}

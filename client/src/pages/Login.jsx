@@ -4,6 +4,8 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
+import { FaEnvelope, FaLock } from 'react-icons/fa'; 
+import logo from '../assets/logo2.png'; 
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -44,7 +46,10 @@ const Login = (props) => {
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
         <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
+          <div className="card-header bg-white text-light p-2" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <img src={logo} alt="Logo" className="logo" />
+            <div className="login" style={{ marginTop: '10px', color: 'black' }}>Login</div> {/*  */}
+          </div>
           <div className="card-body">
             {data ? (
               <p>
@@ -53,22 +58,28 @@ const Login = (props) => {
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
+                <div className="form-group">
+                  <label htmlFor="email"><FaEnvelope /> Email</label>
+                  <input
+                    className="form-input"
+                    placeholder="Your email"
+                    name="email"
+                    type="email"
+                    value={formState.email}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="password"><FaLock /> Password</label>
+                  <input
+                    className="form-input"
+                    placeholder="******"
+                    name="password"
+                    type="password"
+                    value={formState.password}
+                    onChange={handleChange}
+                  />
+                </div>
                 <button
                   className="btn btn-block btn-primary"
                   style={{ cursor: 'pointer' }}

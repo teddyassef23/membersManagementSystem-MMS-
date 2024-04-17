@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Container } from 'react-bootstrap'; 
-// import logo from '../../assets/logo.png'; 
-import Baner from './../../assets/Baner.jpg'
+
+import Baner from './../../assets/logoo.png'
 import Auth from '../../utils/auth';
-import '../css/navbar.css'; 
 import './header.css'
 
 const Header = () => {
@@ -23,16 +22,14 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar expand="md" className="navbar" style={{ backgroundColor: 'lightgrey', color: '#333' }}>
+      <Navbar expand="md" className="navbar navbar-expand-md">
         <Container>
-          <Navbar.Brand as={Link} to="/">
-            {/* <img src={logo} alt="Logo" height="65" className="d-inline-block align-top" /> */}
-          </Navbar.Brand>
-         
-          <Navbar.Collapse id="navbar-nav" className={`justify-content-md-end${isOpen ? ' show' : ''}`}>
-          <img className='baner' src={Baner} alt="" />
+          <Navbar.Toggle aria-controls="navbar-nav" onClick={toggleMenu} />
           
-            {/* <ul className="navbar-nav">
+          <Navbar.Collapse id="navbar-nav" className={`justify-content-md-end w-100${isOpen ? ' show' : ''}`}>
+            <img className='banner img-fluid' src={Baner} alt="" /> {/* Agregamos la clase img-fluid para que la imagen sea responsiva */}
+          
+            <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link className="nav-link" to="/" onClick={toggleMenu}>Home</Link>
               </li>
@@ -40,13 +37,17 @@ const Header = () => {
                 <Link className="nav-link" to="/login" onClick={toggleMenu}>Login</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/logout" onClick={handleLogout}>Logout</Link>
+                <Link className="nav-link" to="/Signup" onClick={toggleMenu}>Sign Up</Link>
               </li>
-            </ul> */}
+              {Auth.loggedIn() && ( // Verifica si el usuario ha iniciado sesión
+                <li className="nav-item">
+                  <Link className="nav-link" to="/logout" onClick={handleLogout}>Logout</Link>
+                </li>
+              )}
+            </ul>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Link className="nav-link logout" to="/logout" onClick={handleLogout}>Logout</Link>
     </header>
   );
 };
