@@ -4,40 +4,51 @@
 
 import "./MemberForm.css";
 import { React, useState } from "react";
-import Family from "./../family/Family.jsx";
-import { Divider } from 'antd';
+import Detail from "../family/Accordion.jsx";
+import { Divider, Select } from "antd";
+import Address from "./../family/Address";
 
 function MemberForm() {
+  const [memberId, setMemberId] = useState("");
   const [firstName, setFirstName] = useState("");
   const [middleName, setMiddleName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  const [primaryPhone, setPrimaryPhone] = useState("");
+  const [secondaryPhone, setSecondaryPhone] = useState("");
+  const [baptismalName, setBaptismalName] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [FamilySize, setFamilySize] = useState("");
+
   const [email, setEmail] = useState("");
-  const [contact, setContact] = useState("");
+  const OPTIONS = ["Apples", "Nails", "Bananas", "Helicopters"];
+
   const [gender, setGender] = useState("male");
   const [subjects, setSubjects] = useState({
     english: true,
-    maths: false,
-    physics: false,
+    Amharic: false,
+    Tigeria: false,
+    Oromo: false,
   });
-  const [resume, setResume] = useState("");
-  const [url, setUrl] = useState();
+
   const [selectedOption, setSelectedOption] = useState("");
-  const [about, setAbout] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(
+      memberId,
       firstName,
       middleName,
       lastName,
+      baptismalName,
+      primaryPhone,
+      secondaryPhone,
+      FamilySize,
       email,
-      contact,
       gender,
       selectedOption,
-      subjects,
-      resume,
-      url,
-      about
+      startDate
     );
     // Add your form submission logic here
   };
@@ -48,37 +59,30 @@ function MemberForm() {
       [sub]: !prev[sub],
     }));
   };
-  const handleReset = () => {
-    // Reset all state variables here
-    setFirstName("");
-    setMiddleName("");
-    setLastName("");
-    setEmail("");
-    setContact("");
-    setGender("male");
-    setSubjects({
-      english: true,
-      maths: false,
-      physics: false,
-    });
-    setResume("");
-    setUrl("");
-    setSelectedOption("");
-    setAbout("");
+
+  var disable = true;
+
+  const addFamily = () => {
+    // call add family f
   };
 
   return (
-
-
     <div className="App ">
       <h1>New Member Registration </h1>
       <div className="new-line"></div>
       <fieldset>
-        
         <form action="#" method="get">
           <section className="container ">
-            
-
+            <label for="firstname">Member ID</label>
+            <input
+              type="text"
+              name="memberId"
+              id="memberId"
+              value={memberId}
+              onChange={(e) => setMemberId(e.target.value)}
+              placeholder="GD-1234"
+              required
+            />
             <label for="firstname">First Name</label>
             <input
               type="text"
@@ -86,18 +90,17 @@ function MemberForm() {
               id="firstname"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              placeholder="Enter First Name"
+              placeholder=" Thomas"
               required
             />
             <label for="middlename">Middle name</label>
             <input
-              type="text"
+              d
               name="middlename"
               id="middlename"
-              value={firstName}
+              value={middleName}
               onChange={(e) => setMiddleName(e.target.value)}
-              placeholder="Enter Middle Name"
-              
+              placeholder=" Jeo"
             />
             <label for="lastname">Last Name</label>
             <input
@@ -106,146 +109,144 @@ function MemberForm() {
               id="lastname"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              placeholder="Enter Last Name"
+              placeholder="Brown"
               required
             />
+            <label for="baptismalName">Baptismal Name </label>
+            <input
+              type="text"
+              name="baptismalName"
+              id="baptismalName"
+              value={baptismalName}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Weld-Meskael"
+            />
+            <label for="familySize"> Family size </label>
+            <Select
+              mode="multiple"
+              placeholder="Inserted are removed"
+              id="familySize"
+              value={selectedItems}
+              onChange={setFamilySize}
+              style={{
+                width: "100%",
+              }}
+              Select={[
+                {
+                  value: "1",
+                  label: "1",
+                },
+                {
+                  value: "2",
+                  label: "2",
+                },
+                {
+                  value: "3",
+                  label: "3",
+                },
+              ]}
+            />
+            <label for="gender">Gender</label>
+            <input type="radio" name="gender" value="male" id="male" />
+            Male
+            <input
+              type="radio"
+              name="gender"
+              value="female"
+              id="female"
+              checked={gender === "female"}
+              onChange={(e) => setGender(e.target.value)}
+            />
+            Female
+            <div className="new-line"></div>
+            <Divider></Divider>
+            <Divider></Divider>
+            <Divider></Divider>
+            <Divider></Divider>
+            <Divider></Divider>
+            <Divider></Divider>
 
-           <label for="email">Enter Email </label>
-           <input
+            <label for="primaryPhone">Primary Phone </label>
+            <input
+              type="phone"
+              name="primaryPhone"
+              id="primaryPhone"
+              value={primaryPhone}
+              onChange={(e) => setPrimaryPhone(e.target.value)}
+              placeholder="+(123) 456-7890"
+            />
+            <label for="email">Enter Email </label>
+            <input
               type="email"
               name="email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter email"
-              
-          />
-
+              placeholder="jeo@abc.com"
+            />
+            <label for="email">Secondar Phone </label>
+            <input
+              type="phone"
+              name="secondaryPhone"
+              id="secondaryPhone"
+              value={secondaryPhone}
+              onChange={(e) => setSecondaryPhone(e.target.value)}
+              placeholder="+(123) 456-7890"
+            />
           </section>
-
-{/* 
-          <label for="firstname">First Name*</label>
-          <input
-            type="text"
-            name="firstname"
-            id="firstname"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            placeholder="Enter First Name"
-            required
-          />
-          <label for="middlename">Middle name*</label>
-          <input
-            type="text"
-            name="middlename"
-            id="middlename"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            placeholder="Enter Middle Name"
-            required
-          />
-          <label for="lastname">Last Name*</label>
-          <input
-            type="text"
-            name="lastname"
-            id="lastname"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            placeholder="Enter Last Name"
-            required
-          /> */}
-
-<div className="new-line"></div>
+          <div className="new-line"></div>
+            <Divider>Primary Address</Divider>
+          <Address />
 
 
-<Divider></Divider>
-
-
-<label for="gender">Gender</label>
-          <input
-            type="radio"
-            name="gender"
-            value="male"
-            id="male"
-            
-          />
-          Male
-          <input
-            type="radio"
-            name="gender"
-            value="female"
-            id="female"
-            checked={gender === "female"}
-            onChange={(e) => setGender(e.target.value)}
-          />
-          Female
-          <input
-            type="radio"
-            name="gender"
-            value="other"
-            id="other"
-            checked={gender === "other"}
-            onChange={(e) => setGender(e.target.value)}
-          />
-          Other
-          <label for="lang">Your Language do can speak</label>
-          <input
-            type="checkbox"
-            name="lang"
-            id="lan"
-        
-            
-          />
-          English
+          <Divider></Divider>
+          <Detail />
+          <label for="lang">Your Language </label>
           <input
             type="checkbox"
             name="lang"
             id="english"
-            checked={subjects.maths === true}
+            checked={subjects.english === true}
             onChange={(e) => handleSubjectChange("english")}
+          />
+          English
+          <input
+            type="checkbox"
+            name="Amharic"
+            id="Amharic"
+            checked={subjects.Amharic === true}
+            onChange={(e) => handleSubjectChange("Amharic")}
           />
           Amharic
           <input
+            disabled={disable}
             type="checkbox"
-            name="lang"
-            id="amharic"
-            checked={subjects.physics === true}
-            onChange={(e) => handleSubjectChange("amharic")}
+            name="Tigeria"
+            id="Tigeria"
+            checked={subjects.Tigeria === true}
+            onChange={(e) => handleSubjectChange("Tigeria")}
           />
           Tigeria
           <input
+            disabled={disable}
             type="checkbox"
-            name="lang"
-            id="tigeria"
-            checked={subjects.maths === true}
-            onChange={(e) => handleSubjectChange("tigeria")}
+            name="Oromo"
+            id="Oromo"
+            checked={subjects.Oromo === true}
+            onChange={(e) => handleSubjectChange("Oromo")}
           />
           Oromo
-          <input
-            type="checkbox"
-            name="lang"
-            id="oromo"
-            checked={subjects.maths === true}
-            onChange={(e) => handleSubjectChange("oromo")}
-          />
-         
-
-
-          <div className="new-line"></div>
+          {/* {/* <div className="new-line"></div>
           <Divider></Divider>
-             <h1>Demandant or/and list of Member Family</h1> 
-      
-
-           <Family/>
-          <button type="reset" value="reset" onClick={() => handleReset()}>
-            Reset
+             <h1>Dependents or/and Member's Family</h1>  */}
+          <button type="button" onClick={() => addFamily()}>
+            Edit
           </button>
-          <button type="submit" value="Submit" onClick={(e) => handleSubmit(e)}>
+          <button type="submit" value="Submit" onClick={(e) => handleSubmit()}>
             Submit
           </button>
         </form>
       </fieldset>
-     
     </div>
   );
 }

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Container } from 'react-bootstrap'; 
-import logo from '../../assets/logo.png'; 
+// import logo from '../../assets/logo.png'; 
+import Baner from './../../assets/Baner.jpg'
 import Auth from '../../utils/auth';
 import '../css/navbar.css'; 
+import './header.css'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false); // Estado para controlar si el menú está abierto o cerrado
@@ -24,11 +26,13 @@ const Header = () => {
       <Navbar expand="md" className="navbar" style={{ backgroundColor: 'lightgrey', color: '#333' }}>
         <Container>
           <Navbar.Brand as={Link} to="/">
-            <img src={logo} alt="Logo" height="30" className="d-inline-block align-top" />
+            {/* <img src={logo} alt="Logo" height="65" className="d-inline-block align-top" /> */}
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbar-nav" onClick={toggleMenu} />
+         
           <Navbar.Collapse id="navbar-nav" className={`justify-content-md-end${isOpen ? ' show' : ''}`}>
-            <ul className="navbar-nav">
+          <img className='baner' src={Baner} alt="" />
+          
+            {/* <ul className="navbar-nav">
               <li className="nav-item">
                 <Link className="nav-link" to="/" onClick={toggleMenu}>Home</Link>
               </li>
@@ -38,10 +42,11 @@ const Header = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="/logout" onClick={handleLogout}>Logout</Link>
               </li>
-            </ul>
+            </ul> */}
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <Link className="nav-link logout" to="/logout" onClick={handleLogout}>Logout</Link>
     </header>
   );
 };
