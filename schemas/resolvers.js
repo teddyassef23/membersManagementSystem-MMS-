@@ -52,12 +52,21 @@ const resolvers = {
     },
     addMember: async (parent, { memberInput }) => {
       try {
-        return await Member.create(memberInput);
+        const { payment, ...rest } = memberInput;
+        const newMember = await Member.create(rest);
+        
+        if (payment) {
+          newMember.payment = payment;
+          await newMember.save();
+        }
+    
+        return newMember;
       } catch (error) {
         console.log('Error creating member:', error);
         throw new Error('Failed to create member.');
       }
     },
+    
     
     updateMember: async (parent, { memberId, memberInput }) => {
       try {

@@ -15,9 +15,7 @@ module.exports = {
     
 
       const authorizationHeader = req.headers.authorization || '';
-      console.log (authorizationHeader);
       const token = authorizationHeader.split(' ')[1]; 
-      console.log(token)
     if (!token) {
       return res.status(401).json({ message: 'You have no token!' });
     }

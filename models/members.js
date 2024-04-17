@@ -63,7 +63,7 @@ const memberSchema = new Schema({
     },
     addresses:   [addressSchema],
     memberFamilies : [memberFamilySchema],
-    payments:  [paymentSchema ]
+    payment:  [paymentSchema ]
 
 
 });
