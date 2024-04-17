@@ -44,7 +44,7 @@ const typeDefs = gql`
     secondaryPhone: String
     paymentFlag: Boolean
     created_date: String!
-    membershipElections: [MembershipElection]
+    payment: [Payment]
     addresses: [Address]
     memberFamilies: [MemberFamily]
   }
@@ -62,7 +62,7 @@ const typeDefs = gql`
     primaryPhone: String
     secondaryPhone: String
     paymentFlag: Boolean
-    membershipElections: [MembershipElectionInput]
+    payment: [PaymentInput]
     addresses: [AddressInput]
     memberFamilies: [MemberFamilyInput]
   }
@@ -109,22 +109,7 @@ const typeDefs = gql`
     createdDate: String!
   }
 
-  type MembershipElection {
-    id: ID!
-    startDate: String!
-    endDate: String
-    created_date: String!
-    membership: Membership
-  }
-
-  input MembershipElectionInput {
-    id: ID!
-    startDate: String!
-    endDate: String
-    created_date: String!
-    membership: MembershipInput
-  }
-
+ 
   type Membership {
     id: ID!
     name: String!
@@ -150,7 +135,6 @@ const typeDefs = gql`
     paymentMethod: String
     paymentDate: String!
     createdDate: String!
-    membershipElection: MembershipElection
   }
 
   input PaymentInput {
@@ -160,7 +144,6 @@ const typeDefs = gql`
     paymentMethod: String
     paymentDate: String!
     createdDate: String!
-    membershipElection: MembershipElectionInput
   }
 `;
 

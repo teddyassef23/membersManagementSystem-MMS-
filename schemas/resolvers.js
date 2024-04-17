@@ -74,7 +74,7 @@ const resolvers = {
         console.error('Error deleting member:', error);
         throw new Error('Failed to delete member.');
       }
-    }
+    },
   },
 
 };
