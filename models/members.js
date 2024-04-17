@@ -2,7 +2,6 @@ const { Schema, model } = require('mongoose');
 const paymentSchema = require('./payments');
 const memberFamilySchema = require('./memberFamily');
 const addressSchema = require('./address');
-const membershipElectionSchema = require('./membershipElection');
 
 
 const memberSchema = new Schema({
@@ -62,10 +61,9 @@ const memberSchema = new Schema({
         required: true,
         default: Date.now,
     },
-    membershipElections : [membershipElectionSchema ],
     addresses:   [addressSchema],
     memberFamilies : [memberFamilySchema],
-    // payments:  [paymentSchema ]
+    payments:  [paymentSchema ]
 
 
 });
