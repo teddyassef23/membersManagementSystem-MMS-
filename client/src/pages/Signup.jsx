@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
-import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa'; // Importa los iconos de FontAwesome
+import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa'; 
 import Auth from '../utils/auth';
-import logo from '../assets/logo.png'; // Importa el logo
+import '../components/css/LoginSignup.css'; // Importa el archivo de estilos
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -16,7 +16,6 @@ const Signup = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setFormState({
       ...formState,
       [name]: value,
@@ -26,12 +25,10 @@ const Signup = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
-
     try {
       const { data } = await addUser({
         variables: { ...formState },
       });
-
       Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
@@ -41,12 +38,9 @@ const Signup = () => {
   return (
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
-        <div className="card">
-          
-          <h4 className="card-header bg-dark text-light p-2" >Sign Up</h4>
+        <div className="card signup-card">
+          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
           <div className="card-body">
-            <div className="logo-container">
-            </div>
             <form onSubmit={handleFormSubmit}>
               <div className="form-group">
                 <label htmlFor="username"><FaUser /> Username</label>
@@ -82,8 +76,7 @@ const Signup = () => {
                 />
               </div>
               <button
-                className="btn btn-block btn-primary"
-                style={{ cursor: 'pointer' }}
+                className="btn btn-block btn-primary submit-button"
                 type="submit"
               >
                 Submit
