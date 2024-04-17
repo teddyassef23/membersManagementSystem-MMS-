@@ -23,7 +23,7 @@ async function startServer() {
     context: ({ req }) => ({ user: req.user }), 
   });
 
-  // app.use(authMiddleware);
+   app.use(authMiddleware);
 
   await server.start();
 

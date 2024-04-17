@@ -2,7 +2,6 @@ const MemberFamily  = require('./../models/memberFamily');
 
 
 module.exports = {
-    // Get all memberFamily
     async getMemberFamilies(req, res) {
      
         const memberFamily = await MemberFamily.find();
@@ -12,7 +11,6 @@ module.exports = {
     },
     
     
-    // Get memberFamily bi ID
     async getSingleMemberFamily(req, res) {
       try {
         const memberFamily = await this.MemberFamily.findOne({ _id: req.params.memberFamilysId });
@@ -21,7 +19,6 @@ module.exports = {
         res.status(500).json(err);
       }
     },
-    // create a new user
     async createMemberFamily(req, res) {
       try {
         const memberFamily = await MemberFamily.create(req.body);

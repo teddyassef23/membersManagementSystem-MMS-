@@ -2,6 +2,7 @@
   "name": "membersManagementSystem-mms-",
   "version": "1.0.0",
   "description": "Member Management and payment collection ",
+<<<<<<< HEAD
   "main": "server/server.js",
   "devDependencies": {
     "concurrently": "^8.2.0"
@@ -12,6 +13,19 @@
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
     "build": "cd client && npm run build"
+=======
+  "main": "server.js",
+  "dependencies": {
+    "apollo-server-express": "^3.13.0",
+    "bcrypt": "^5.1.1",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+>>>>>>> 80f38d0be9a186f64e575efd44a04b12cf0357f7
   },
   "author": "",
   "license": "ISC",
