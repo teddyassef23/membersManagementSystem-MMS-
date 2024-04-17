@@ -1,99 +1,58 @@
 import React from 'react';
-import { Table } from 'antd';
-const columns = [
-  {
-    title: 'Name',
-    dataIndex: 'name',
-    filters: [
-      {
-        text: 'Joe',
-        value: 'Joe',
-      },
-      {
-        text: 'Category 1',
-        value: 'Category 1',
-        children: [
-          {
-            text: 'Yellow',
-            value: 'Yellow',
-          },
-          {
-            text: 'Pink',
-            value: 'Pink',
-          },
-        ],
-      },
-      {
-        text: 'Category 2',
-        value: 'Category 2',
-        children: [
-          {
-            text: 'Green',
-            value: 'Green',
-          },
-          {
-            text: 'Black',
-            value: 'Black',
-          },
-        ],
-      },
-    ],
-    filterMode: 'tree',
-    filterSearch: true,
-    onFilter: (value, record) => record.name.includes(value),
-    width: '30%',
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    sorter: (a, b) => a.age - b.age,
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    filters: [
-      {
-        text: 'London',
-        value: 'London',
-      },
-      {
-        text: 'New York',
-        value: 'New York',
-      },
-    ],
-    onFilter: (value, record) => record.address.startsWith(value),
-    filterSearch: true,
-    width: '40%',
-  },
-];
+import { Space, Table, Tag } from 'antd';
+// import 'semantic-ui-css/semantic.min.css';
+const { Column, ColumnGroup } = Table;
 const data = [
   {
     key: '1',
-    name: 'John Brown',
+    firstName: 'John',
+    lastName: 'Brown',
     age: 32,
     address: 'New York No. 1 Lake Park',
+    tags: ['nice', 'developer'],
   },
   {
     key: '2',
-    name: 'Jim Green',
+    firstName: 'Jim',
+    lastName: 'Green',
     age: 42,
     address: 'London No. 1 Lake Park',
+    tags: ['loser'],
   },
   {
     key: '3',
-    name: 'Joe Black',
+    firstName: 'Joe',
+    lastName: 'Black',
     age: 32,
     address: 'Sydney No. 1 Lake Park',
-  },
-  {
-    key: '4',
-    name: 'Jim Red',
-    age: 32,
-    address: 'London No. 2 Lake Park',
+    tags: ['cool', 'teacher'],
   },
 ];
-const onChange = (pagination, filters, sorter, extra) => {
-  console.log('params', pagination, filters, sorter, extra);
-};
-const Family = () => <Table columns={columns} dataSource={data} onChange={onChange} />;
+const Family = () => (
+  <Table dataSource={data}>
+    <ColumnGroup title="Name">
+      <Column title="First Name" dataIndex="firstName" key="firstName" />
+      <Column title="Middle Name" dataIndex="middleName" key="middleName" />
+      <Column title="Last Name" dataIndex="lastName" key="lastName" />
+    </ColumnGroup>
+    <Column title="Age" dataIndex="age" key="age" />
+    <Column title="Gender" dataIndex="gender" key="gender" />
+    <Column title="Relationship" dataIndex="age" key="age" />
+  
+   
+    <Column
+      title="Action"
+      key="action"
+      render={(_, record) => (
+        <Space size="middle">
+          <a>Invite {record.lastName}</a>
+          <a>Delete</a>
+          <a >Add</a>
+        
+        </Space>
+      )}
+    />
+   
+  </Table>
+);
 export default Family;

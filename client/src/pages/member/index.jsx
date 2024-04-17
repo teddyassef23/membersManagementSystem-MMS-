@@ -1,129 +1,88 @@
-import React from 'react';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+import React, { useState } from 'react';
+import {
+  DollarCircleOutlined,
+  SettingOutlined,
+   UserOutlined,
+} from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import MemberForm from './Form'
+import './style.css'
 const {  Content, Footer, Sider } = Layout;
-
-const items1 = ['Add new Member', 'Modify Member Information', 'Cancel Menbership'].map((key) => ({
-  key,
-  label: `nav ${key}`,
-}));
-
-
-
-
-
-const items2 = [UserOutlined, LaptopOutlined, NotificationOutlined].map((icon, index) => {
-  const key = [
-                { name:'Member'},
-                {name: 'Payment'},
-                {name: 'Setting'}
-              ];
-  // const Array = [
-  //               { 
-  //                 name:'Member',
-  //                 id: 1
-  //               },
-  //               {
-  //                 name: 'Payment',
-  //                 id: 2
-  //               },
-    //               {
-  //                 name: 'Payment',
-  //                 id: 3
-  //               },
-  //               {
-  //                 name: 'Setting',
-  //                 id: 4
-  //               }
-  //             ];
-
-  items1.map((menu)=>{
-    console.log(menu)
-    
-    })
+function getItem(label, key, icon, children) {
   return {
-    key: `Side1 menu`,
-    icon: React.createElement(icon),
-    label: `Side menu`,
-
-    children: new Array(4).fill(null).map((_, j) => {
-      const subKey = index * 4 + j + 1;
-      return {
-        key: subKey,
-        label: `option${subKey}`,
-      };
-    }),
+    key,
+    icon,
+    children,
+    label,
   };
+}
+const items = [
 
-  
-});
-
-
-
-
-
+  getItem('Member', 'sub1', <UserOutlined />, [
+    getItem('Find ', '3'),
+    getItem('Add New ', '4'),
+    getItem('Edit ', '5'),
+  ]),
+  getItem('Payment', 'sub2', <DollarCircleOutlined  />, 
+  [getItem('New payment',  '6'), 
+  getItem('Check Status', '8')]),
+  getItem('Setting', 'sub3', <SettingOutlined />),
+];
 const Member = () => {
+  const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   return (
-    <Layout>
-
-      <Content
-        style={{
-          padding: '0 48px',
-        }}
-      >
-        <Breadcrumb
+    <Layout
+      style={{
+        minHeight: '100vh',
+        background: 'blue',
+        
+      }}
+    >
+      <Sider className="sideMenu" collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+        <div className="demo-logo-vertical " />
+        <Menu theme="dark" className="sideMenu" defaultSelectedKeys={['1']} mode="inline" items={items} />
+      </Sider>
+      <Layout >
+      <a className='logout' >Logout </a>
+        <Content
+        
           style={{
-            margin: '16px 0',
+            margin: '016px',
+            // background:' blue',
+            
           }}
         >
-          
-        </Breadcrumb>
-        <Layout
-          style={{
-            padding: '24px 0',
-            background: colorBgContainer,
-            borderRadius: borderRadiusLG,
-          }}
-        >
-          <Sider
+          <Breadcrumb
             style={{
+              margin: '16px 0',
               background: colorBgContainer,
             }}
-            width={200}
           >
-            <Menu
-              mode="inline"
-              defaultSelectedKeys={['1']}
-              defaultOpenKeys={['sub1']}
-              style={{
-                height: '100%',
-              }}
-              items={items2}
-            />
-          </Sider>
-          <Content
+         
+          </Breadcrumb>
+          <div
             style={{
-              padding: '0 24px',
-              minHeight: 280,
+              padding: 24,
+              minHeight: 360,
+              background: colorBgContainer,
+              borderRadius: borderRadiusLG,
             }}
           >
-          
-            <MemberForm/>
-            
-          </Content>
-        </Layout>
-      </Content>
-      <Footer
-        style={{
-          textAlign: 'center',
-        }}
-      >
-        MofU Design ©{new Date().getFullYear()} Created by Group4
-      </Footer>
+             <MemberForm/>
+          </div>
+        </Content>
+      
+        <Footer
+          style={{
+            textAlign: 'center',
+          }}
+        >
+          {/* Ant Design ©{new Date().getFullYear()} Created by Ant UED */}
+        </Footer>
+      </Layout>
     </Layout>
   );
 };
