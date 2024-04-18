@@ -7,14 +7,14 @@ import Auth from '../../utils/auth';
 import '../css/header.css'
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false); // Estado para controlar si el menú está abierto o cerrado
+  const [isOpen, setIsOpen] = useState(false); // State to control whether the menu is open or closed
 
-  // Función para alternar entre abrir y cerrar el menú
+  // Function to toggle between opening and closing the menu
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  // Función para manejar el cierre de sesión
+  // Function to handle logout
   const handleLogout = (event) => {
     event.preventDefault();
     Auth.logout();
@@ -22,14 +22,20 @@ const Header = () => {
 
   return (
     <header>
+      {/* Navbar component */}
       <Navbar expand="md" className="navbar navbar-expand-md">
         <Container>
+          {/* Navbar.Toggle to show the collapse menu on small screens */}
           <Navbar.Toggle aria-controls="navbar-nav" onClick={toggleMenu} />
           
+          {/* Navbar.Collapse to control the collapsing behavior of the navbar */}
           <Navbar.Collapse id="navbar-nav" className={`justify-content-md-end w-100${isOpen ? ' show' : ''}`}>
-            <img className='banner img-fluid' src={Baner} alt="" /> {/* Agregamos la clase img-fluid para que la imagen sea responsiva */}
+            {/* Logo */}
+            <img className='banner img-fluid' src={Baner} alt="" /> {/* Add the img-fluid class to make the image responsive */}
           
+            {/* Navigation links */}
             <ul className="navbar-nav ml-auto">
+              {/* Home link */}
               <li className="nav-item">
                 <Link className="nav-link" to="/" onClick={toggleMenu}>Home</Link>
               </li>

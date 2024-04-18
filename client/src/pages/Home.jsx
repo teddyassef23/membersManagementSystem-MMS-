@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring'; 
-import Homepage from '../components/css/home.css';
+import '../components/css/home.css';
 import image1 from '../assets/member.png';
 import image2 from '../assets/spritual.jpg';
 

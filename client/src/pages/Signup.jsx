@@ -4,7 +4,8 @@ import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa'; 
 import Auth from '../utils/auth';
-import '../components/css/LoginSignup.css'; // Importa el archivo de estilos
+import '../components/css/LoginSignup.css'; 
+import Footer from '../components/Footer/index'; // Import the Footer component
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -36,61 +37,64 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card signup-card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
-          <div className="card-body">
-            <form onSubmit={handleFormSubmit}>
-              <div className="form-group">
-                <label htmlFor="username"><FaUser /> Username</label>
-                <input
-                  className="form-input"
-                  placeholder="Your username"
-                  name="username"
-                  type="text"
-                  value={formState.username}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email"><FaEnvelope /> Email</label>
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password"><FaLock /> Password</label>
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-              </div>
-              <button
-                className="btn btn-block btn-primary submit-button"
-                type="submit"
-              >
-                Submit
-              </button>
-            </form>
-            {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-              </div>
-            )}
+    <>
+      <main className="flex-row justify-center mb-4">
+        <div className="col-12 col-lg-10">
+          <div className="card signup-card">
+            <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
+            <div className="card-body">
+              <form onSubmit={handleFormSubmit}>
+                <div className="form-group">
+                  <label htmlFor="username"><FaUser /> Username</label>
+                  <input
+                    className="form-input"
+                    placeholder="Your username"
+                    name="username"
+                    type="text"
+                    value={formState.username}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email"><FaEnvelope /> Email</label>
+                  <input
+                    className="form-input"
+                    placeholder="Your email"
+                    name="email"
+                    type="email"
+                    value={formState.email}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="password"><FaLock /> Password</label>
+                  <input
+                    className="form-input"
+                    placeholder="******"
+                    name="password"
+                    type="password"
+                    value={formState.password}
+                    onChange={handleChange}
+                  />
+                </div>
+                <button
+                  className="btn btn-block btn-primary submit-button"
+                  type="submit"
+                >
+                  Submit
+                </button>
+              </form>
+              {error && (
+                <div className="my-3 p-3 bg-danger text-white">
+                  {error.message}
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+      <Footer /> {/* Render the Footer component here */}
+    </>
   );
 };
 

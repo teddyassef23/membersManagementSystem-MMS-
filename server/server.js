@@ -2,7 +2,7 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./schemas');
 const { authMiddleware } = require('./utils/auth'); 
-const cors = require('cors');
+// const cors = require('cors');
 const mongoose = require('mongoose');
 
 async function startServer() {
@@ -10,7 +10,7 @@ async function startServer() {
 
   app.use(express.json()); 
   app.use(express.urlencoded({ extended: true })); 
-  app.use(cors()); 
+  // app.use(cors()); 
 
   await mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/mms_db', {
     useNewUrlParser: true,
@@ -23,7 +23,7 @@ async function startServer() {
     context: ({ req }) => ({ user: req.user }), 
   });
 
-  // app.use(authMiddleware);
+   app.use(authMiddleware);
 
   await server.start();
 

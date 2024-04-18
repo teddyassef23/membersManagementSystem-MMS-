@@ -2,7 +2,6 @@ const Member  = require('./../models/members');
 const Payment  = require('./../models/payments');
 
 module.exports = {
-  // Get all members
   async getMembers(req, res) {
    
       const members = await Member.find();
@@ -10,7 +9,6 @@ module.exports = {
   },
   
   
-  // Get member bi ID
   async getSingleMember(req, res) {
     try {
       const members = await Member.findOne({ _id: req.params.memberId });
@@ -19,7 +17,6 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // create a new user
   async createMember(req, res) {
     try {
       const member = await Member.create(req.body);
@@ -29,8 +26,6 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-
-
 
   async addPayment(req, res) {
    

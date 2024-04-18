@@ -1,22 +1,21 @@
+
 const jwt = require('jsonwebtoken');
 const secret = 'mysecretsshhhhh';
 const expiration = '2h';
 module.exports = {
   authMiddleware: function (req, res, next) {
 
-
+   
       const operationName = req.body.operationName
       console.log(operationName)
-
+      
       if (operationName === 'addUser' || operationName === 'login' ) {
         return next();
       }
-
+    
 
       const authorizationHeader = req.headers.authorization || '';
-      console.log (authorizationHeader);
       const token = authorizationHeader.split(' ')[1]; 
-      console.log(token)
     if (!token) {
       return res.status(401).json({ message: 'You have no token!' });
     }
