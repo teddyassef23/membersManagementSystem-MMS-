@@ -1,5 +1,4 @@
 const { Schema } = require('mongoose');
-const membershipElectionSchema = require('./membershipElection')
 
 const paymentSchema = new Schema({
   
@@ -29,7 +28,6 @@ const paymentSchema = new Schema({
         required: true,
         default: Date.now,
     },
-    membershipElection: membershipElectionSchema,
   
 
 });
