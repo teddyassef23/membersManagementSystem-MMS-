@@ -10,11 +10,11 @@ const typeDefs = gql`
     addMember(memberInput: MemberInput!): Member
     updateMember(memberId: ID!, memberInput: MemberInput!): Member
     deleteMember(memberId: ID!): Member
-    login(email: String!, password: String!): AuthPayload!
+    login(email: String!, password: String!): AuthPayload
   }
   type AuthPayload {
-    token: String!
-    user: Member!
+    token: ID!
+    user: User!
   }
   type User {
     _id: ID

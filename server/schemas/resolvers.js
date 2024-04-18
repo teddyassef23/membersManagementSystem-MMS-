@@ -3,6 +3,7 @@ const User = require('../models/User')
 
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
+const { json } = require('express');
 
 const resolvers = {
   Query: {
@@ -35,8 +36,9 @@ const resolvers = {
       }
     },
     login: async (parent, { email, password }) => {
+      console.log(JSON.stringify(email));
       const user = await User.findOne({ email });
-
+      
       if (!user) {
         throw new AuthenticationError('Invalid email or password!');
       }

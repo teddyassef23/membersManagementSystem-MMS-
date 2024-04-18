@@ -1,38 +1,41 @@
+const { GraphQLError } = require('graphql');
 const jwt = require('jsonwebtoken');
-const secret = 'mysecretsshhhhh';
+
+const secret = 'mysecretssshhhhhhh';
 const expiration = '2h';
+
 module.exports = {
-  authMiddleware: function (req, res, next) {
+  AuthenticationError: new GraphQLError('Could not authenticate user.', {
+    extensions: {
+      code: 'UNAUTHENTICATED',
+    },
+  }),
+  authMiddleware: function ({ req }) {
+    // allows token to be sent via req.body, req.query, or headers
+    let token = req.body.token || req.query.token || req.headers.authorization;
 
-
-      const operationName = req.body.operationName
-      console.log(operationName)
-
-      if (operationName === 'addUser' || operationName === 'login' ) {
-        return next();
-      }
-
-
-      const authorizationHeader = req.headers.authorization || '';
-      console.log (authorizationHeader);
-      const token = authorizationHeader.split(' ')[1]; 
-      console.log(token)
-    if (!token) {
-      return res.status(401).json({ message: 'You have no token!' });
+    // We split the token string into an array and return actual token
+    if (req.headers.authorization) {
+      token = token.split(' ').pop().trim();
     }
 
+    if (!token) {
+      return req;
+    }
+
+    // if token can be verified, add the decoded user's data to the request so it can be accessed in the resolver
     try {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
-      next();
-    } catch (err) {
-      console.log('Invalid token:', err);
-      return res.status(401).json({ message: 'Invalid token!' });
+    } catch {
+      console.log('Invalid token');
     }
-  },
-  signToken: function ({ username, email, _id }) {
-    const payload = { username, email, _id };
 
+    // return the request object so it can be passed to the resolver as `context`
+    return req;
+  },
+  signToken: function ({ email, name, _id }) {
+    const payload = { email, name, _id };
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
 };
