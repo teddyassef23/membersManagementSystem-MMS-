@@ -33,7 +33,15 @@ const router = createBrowserRouter([
       }, {
         path: '/thoughts/:thoughtId',
         element: <SingleThought />
-      }
+      },
+      {
+        path: '/payment',
+        element: <Payment />
+      },
+      {
+        path: '/paymentElection',
+        element: <PaymentElection />
+      },
     ]
   },
 ]);
