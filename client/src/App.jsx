@@ -8,22 +8,21 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
 
-
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Header from './components/Header';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 
-// Construct our main GraphQL API endpoint
+// Construir el punto final principal de la API GraphQL
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
-// Construct request middleware that will attach the JWT token to every request as an `authorization` header
+// Construir middleware de solicitud que adjuntará el token JWT a cada solicitud como un encabezado de `authorization`
 const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
+  // obtener el token de autenticación del almacenamiento local si existe
   const token = localStorage.getItem('id_token');
-  // return the headers to the context so httpLink can read them
+  // devolver los encabezados al contexto para que httpLink pueda leerlos
   return {
     headers: {
       ...headers,
@@ -33,7 +32,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
+  // Configurar nuestro cliente para ejecutar el middleware `authLink` antes de realizar la solicitud a nuestra API GraphQL
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
@@ -44,9 +43,9 @@ function App() {
       <div className="flex-column justify-flex-start min-100-vh">
         <Header />
         <div className="container">
-         <Outlet />
+          <Outlet />
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </ApolloProvider>
   );

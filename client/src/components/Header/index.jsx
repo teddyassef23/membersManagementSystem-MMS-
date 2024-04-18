@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Container } from 'react-bootstrap'; 
-// import logo from '../../assets/logo.png'; 
-import Baner from './../../assets/Baner.jpg'
+
+import Baner from './../../assets/logoo.png'
 import Auth from '../../utils/auth';
-import '../css/navbar.css'; 
-import './header.css'
+import '../css/header.css'
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false); // Estado para controlar si el menú está abierto o cerrado
+  const [isOpen, setIsOpen] = useState(false); // State to control whether the menu is open or closed
 
-  // Función para alternar entre abrir y cerrar el menú
+  // Function to toggle between opening and closing the menu
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  // Función para manejar el cierre de sesión
+  // Function to handle logout
   const handleLogout = (event) => {
     event.preventDefault();
     Auth.logout();
@@ -23,30 +22,44 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar expand="md" className="navbar" style={{ backgroundColor: 'lightgrey', color: '#333' }}>
+      {/* Navbar component */}
+      <Navbar expand="md" className="navbar navbar-expand-md">
         <Container>
-          <Navbar.Brand as={Link} to="/">
-            {/* <img src={logo} alt="Logo" height="65" className="d-inline-block align-top" /> */}
-          </Navbar.Brand>
-         
-          <Navbar.Collapse id="navbar-nav" className={`justify-content-md-end${isOpen ? ' show' : ''}`}>
-          <img className='baner' src={Baner} alt="" />
+          {/* Navbar.Toggle to show the collapse menu on small screens */}
+          <Navbar.Toggle aria-controls="navbar-nav" onClick={toggleMenu} />
           
-            {/* <ul className="navbar-nav">
+          {/* Navbar.Collapse to control the collapsing behavior of the navbar */}
+          <Navbar.Collapse id="navbar-nav" className={`justify-content-md-end w-100${isOpen ? ' show' : ''}`}>
+            {/* Logo */}
+            <img className='banner img-fluid' src={Baner} alt="" /> {/* Add the img-fluid class to make the image responsive */}
+          
+            {/* Navigation links */}
+            <ul className="navbar-nav ml-auto">
+              {/* Home link */}
               <li className="nav-item">
                 <Link className="nav-link" to="/" onClick={toggleMenu}>Home</Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/login" onClick={toggleMenu}>Login</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/logout" onClick={handleLogout}>Logout</Link>
-              </li>
-            </ul> */}
+              {/* Conditional rendering for Login and Sign Up links based on user authentication status */}
+              {!Auth.loggedIn() && ( // Check if the user is not logged in
+                <>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/login" onClick={toggleMenu}>Login</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/Signup" onClick={toggleMenu}>Sign Up</Link>
+                  </li>
+                </>
+              )}
+              {/* Logout link */}
+              {Auth.loggedIn() && ( // Check if the user is logged in
+                <li className="nav-item">
+                  <Link className="nav-link" to="/logout" onClick={handleLogout}>Logout</Link>
+                </li>
+              )}
+            </ul>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Link className="nav-link logout" to="/logout" onClick={handleLogout}>Logout</Link>
     </header>
   );
 };
