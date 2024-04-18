@@ -39,19 +39,16 @@ const Header = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="/" onClick={toggleMenu}>Home</Link>
               </li>
-              {/* Conditional rendering for Login and Sign Up links based on user authentication status */}
-              {!Auth.loggedIn() && ( // Check if the user is not logged in
-                <>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/login" onClick={toggleMenu}>Login</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/Signup" onClick={toggleMenu}>Sign Up</Link>
-                  </li>
-                </>
-              )}
-              {/* Logout link */}
-              {Auth.loggedIn() && ( // Check if the user is logged in
+              <li className="nav-item">
+                <Link className="nav-link" to="/login" onClick={toggleMenu}>Login</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/Signup" onClick={toggleMenu}>Sign Up</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/paymentElection" onClick={toggleMenu}>Contribute</Link>
+              </li>
+              {Auth.loggedIn() && ( // Verifica si el usuario ha iniciado sesión  
                 <li className="nav-item">
                   <Link className="nav-link" to="/logout" onClick={handleLogout}>Logout</Link>
                 </li>
