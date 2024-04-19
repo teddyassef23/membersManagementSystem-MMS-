@@ -46,6 +46,9 @@ const Header = () => {
                    <li className="nav-item">
                        <Link className="nav-link" to="/paymentElection" onClick={toggleMenu}>Contribute</Link>
                    </li>
+                   <li className="nav-item">
+                       <Link className="nav-link" to="/members" onClick={toggleMenu}>Members</Link>
+                   </li>
                    </>
                ) : (
                    <>
