@@ -9,7 +9,6 @@ import '../css/header.css'
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false); // State to control whether the menu is open or closed
 
-  // Function to toggle between opening and closing the menu
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -23,7 +22,7 @@ const Header = () => {
   return (
     <header>
       {/* Navbar component */}
-      <Navbar expand="md" className="navbar navbar-expand-md">
+      <Navbar className="navbar navbar-expand-md">
         <Container>
           {/* Navbar.Toggle to show the collapse menu on small screens */}
           <Navbar.Toggle aria-controls="navbar-nav" onClick={toggleMenu} />
@@ -45,6 +44,9 @@ const Header = () => {
                    </li>
                    <li className="nav-item">
                        <Link className="nav-link" to="/payment" onClick={toggleMenu}>Contribute</Link>
+                   </li>
+                   <li className="nav-item">
+                       <Link className="nav-link" to="/members" onClick={toggleMenu}>Members</Link>
                    </li>
                    </>
                ) : (

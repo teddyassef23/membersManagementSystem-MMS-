@@ -10,8 +10,7 @@ const HomePage = () => {
   const mainSpring = useSpring({ opacity: 1, from: { opacity: 0 } });
 
   return (
-    <div className="row">
-      {/* Aplica las animaciones a los elementos deseados */}
+    <div className="container">
       <animated.div className="side" style={sideSpring}>
         <h2>DEBRE MIHRET ST. MICHAEL ETHIOPIAN ORTHODOX TEWAHEDO CHURCH OF ILLINOIS</h2>
         <p>Our Church is growing in the number of people who attend Sunday worship and in its capacity to provide spiritual services to the parishioners. It provides Divine Liturgy, bible study, spiritual counselling, baptism, Christian matrimonies, visitations of the sick, and assistance for the needy.</p>
