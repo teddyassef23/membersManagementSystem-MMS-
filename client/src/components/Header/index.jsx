@@ -45,9 +45,11 @@ const Header = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="/Signup" onClick={toggleMenu}>Sign Up</Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/paymentElection" onClick={toggleMenu}>Contribute</Link>
-              </li>
+              {Auth.loggedIn() && (
+                <li className="nav-item">
+                  <Link className="nav-link" to="/payment" onClick={toggleMenu}>Payment</Link>
+                </li>
+              )}
               {Auth.loggedIn() && ( // Verifica si el usuario ha iniciado sesión  
                 <li className="nav-item">
                   <Link className="nav-link" to="/logout" onClick={handleLogout}>Logout</Link>
