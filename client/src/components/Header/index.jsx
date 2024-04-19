@@ -36,25 +36,31 @@ const Header = () => {
             {/* Navigation links */}
             <ul className="navbar-nav ml-auto">
               {/* Home link */}
-              <li className="nav-item">
-                <Link className="nav-link" to="/" onClick={toggleMenu}>Home</Link>
-              </li>
-              {/* Conditional rendering for Login and Sign Up links based on user authentication status */}
-              {!Auth.loggedIn() && ( // Check if the user is not logged in
+
+
+              {Auth.loggedIn()? ( // Verifica si el usuario ha iniciado sesión  
                 <>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/login" onClick={toggleMenu}>Login</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/Signup" onClick={toggleMenu}>Sign Up</Link>
-                  </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/logout" onClick={handleLogout}>Logout</Link>
+                   </li>
+                   <li className="nav-item">
+                       <Link className="nav-link" to="/paymentElection" onClick={toggleMenu}>Contribute</Link>
+                   </li>
+                   </>
+               ) : (
+                   <>
+
+                    <li className="nav-item">
+                         <Link className="nav-link" to="/" onClick={toggleMenu}>Home</Link>
+                    </li>
+                    <li className="nav-item">
+                         <Link className="nav-link" to="/login" onClick={toggleMenu}>Login</Link>
+                   </li>
+                   <li className="nav-item">
+                       <Link className="nav-link" to="/Signup" onClick={toggleMenu}>Sign Up</Link>
+                   </li>
                 </>
-              )}
-              {/* Logout link */}
-              {Auth.loggedIn() && ( // Check if the user is logged in
-                <li className="nav-item">
-                  <Link className="nav-link" to="/logout" onClick={handleLogout}>Logout</Link>
-                </li>
+
               )}
             </ul>
           </Navbar.Collapse>
