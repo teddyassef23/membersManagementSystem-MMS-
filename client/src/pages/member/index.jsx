@@ -17,22 +17,54 @@ function getItem(label, key, icon, children) {
   };
 }
 const items = [
-
-  getItem('Member', 'sub1', <UserOutlined />, [
-    getItem('Find ', '3'),
-    getItem('Add New ', '4'),
-    getItem('Edit ', '5'),
-  ]),
-  getItem('Payment', 'sub2', <DollarCircleOutlined  />, 
-  [getItem('New payment',  '6'), 
-  getItem('Check Status', '8')]),
-  getItem('Setting', 'sub3', <SettingOutlined />),
+  {
+    key: 'sub1',
+    label: 'Member',
+    icon: <UserOutlined />,
+    children: [
+      { key: '3', label: 'Members', url: '/members' },
+      { key: '4', label: 'Add New', url: '/add-member' },
+      { key: '5', label: 'Edit', url: '/edit' },
+    ],
+  },
+  {
+    key: 'sub2',
+    label: 'Payment',
+    icon: <DollarCircleOutlined />,
+    children: [
+      { key: '6', label: 'New payment', url: '/new-payment' },
+      { key: '8', label: 'Check Status', url: '/check-status' },
+    ],
+  },
+  {
+    key: 'sub3',
+    label: 'Setting',
+    icon: <SettingOutlined />,
+    url: '/settings',
+  },
 ];
+
 const Member = () => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+  const renderMenuItems = (menuItems) =>
+  menuItems.map((item) => {
+    if (item.children) {
+      return (
+        <Menu.SubMenu key={item.key} icon={item.icon} title={item.label}>
+          {renderMenuItems(item.children)}
+        </Menu.SubMenu>
+      );
+    }
+    return (
+      <Menu.Item key={item.key}>
+        <a href={item.url}>{item.label}</a>
+      </Menu.Item>
+    );
+  });
+
   return (
     <Layout
       style={{
@@ -43,7 +75,9 @@ const Member = () => {
     >
       <Sider className="sideMenu" collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
         <div className="demo-logo-vertical " />
-        <Menu theme="dark" className="sideMenu" defaultSelectedKeys={['1']} mode="inline" items={items} />
+        <Menu theme="dark" className="sideMenu" defaultSelectedKeys={['1']} mode="inline">
+          {renderMenuItems(items)}
+        </Menu>
       </Sider>
       <Layout >
       <a className='logout' >Logout </a>

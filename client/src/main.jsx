@@ -9,6 +9,7 @@ import SingleThought from './pages/SingleThought';
 import Profile from './pages/Profile';
 import ErrorPage from './pages/ErrorPage';
 import Member from './pages/member/index.jsx';
+import MemberForm from './pages/member/Form.jsx';
 // import PaymentElection from './pages/PaymentElection';
 // import Payment from './pages/Payment';
 
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: '/members',
         element: <Member />
+      },
+      {
+        path: '/add-member',
+        element: <MemberForm />
       },
       // {
       //   path: '/payment',
