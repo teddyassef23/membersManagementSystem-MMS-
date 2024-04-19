@@ -8,8 +8,8 @@ import Login from './pages/Login';
 import SingleThought from './pages/SingleThought';
 import Profile from './pages/Profile';
 import ErrorPage from './pages/ErrorPage';
-import PaymentElection from './pages/PaymentElection';
-import Payment from './pages/Payment';
+// import PaymentElection from './pages/PaymentElection';
+// import Payment from './pages/Payment';
 
 const router = createBrowserRouter([
   {
@@ -36,14 +36,14 @@ const router = createBrowserRouter([
         path: '/thoughts/:thoughtId',
         element: <SingleThought />
       },
-      {
-        path: '/payment',
-        element: <Payment />
-      },
-      {
-        path: '/paymentElection',
-        element: <PaymentElection />
-      },
+      // {
+      //   path: '/payment',
+      //   element: <Payment />
+      // },
+      // {
+      //   path: '/paymentElection',
+      //   element: <PaymentElection />
+      // },
     ]
   },
 ]);
