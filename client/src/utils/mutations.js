@@ -24,6 +24,53 @@ export const ADD_USER = gql`
   }
 `;
 
+const GET_ALL_MEMBERS = gql`
+  query GetAllMembers {
+    getAllMembers {
+      _id
+      memberNumber
+      firstName
+      lastName
+      baptismalName
+      gender
+      startDate
+      endDate
+      email
+      primaryPhone
+      secondaryPhone
+      paymentFlag
+      created_date
+      addresses {
+        street
+        street2
+        city
+        state
+        zip
+        country
+        created_date
+      }
+      memberFamilies {
+        id
+        firstName
+        middleName
+        lastName
+        baptismalName
+        gender
+        relationShip
+        createdDate
+      }
+      payment {
+        amount
+        month
+        year
+        paymentMethod
+        paymentDate
+        createdDate
+      }
+    }
+  }
+`;
+
 export const ADD_THOUGHT = gql`
   mutation addThought($thoughtText: String!) {
     addThought(thoughtText: $thoughtText) {
