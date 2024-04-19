@@ -36,24 +36,31 @@ const Header = () => {
             {/* Navigation links */}
             <ul className="navbar-nav ml-auto">
               {/* Home link */}
-              <li className="nav-item">
-                <Link className="nav-link" to="/" onClick={toggleMenu}>Home</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/login" onClick={toggleMenu}>Login</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/Signup" onClick={toggleMenu}>Sign Up</Link>
-              </li>
-              {Auth.loggedIn() && (
-                <li className="nav-item">
-                  <Link className="nav-link" to="/payment" onClick={toggleMenu}>Payment</Link>
-                </li>
-              )}
-              {Auth.loggedIn() && ( // Verifica si el usuario ha iniciado sesión  
-                <li className="nav-item">
-                  <Link className="nav-link" to="/logout" onClick={handleLogout}>Logout</Link>
-                </li>
+
+
+              {Auth.loggedIn()? ( // Verifica si el usuario ha iniciado sesión  
+                <>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/logout" onClick={handleLogout}>Logout</Link>
+                   </li>
+                   <li className="nav-item">
+                       <Link className="nav-link" to="/paymentElection" onClick={toggleMenu}>Contribute</Link>
+                   </li>
+                   </>
+               ) : (
+                   <>
+
+                    <li className="nav-item">
+                         <Link className="nav-link" to="/" onClick={toggleMenu}>Home</Link>
+                    </li>
+                    <li className="nav-item">
+                         <Link className="nav-link" to="/login" onClick={toggleMenu}>Login</Link>
+                   </li>
+                   <li className="nav-item">
+                       <Link className="nav-link" to="/Signup" onClick={toggleMenu}>Sign Up</Link>
+                   </li>
+                </>
+
               )}
             </ul>
           </Navbar.Collapse>
