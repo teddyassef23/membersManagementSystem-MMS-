@@ -1,59 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { DollarCircleOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme , Table} from 'antd';
+import { Breadcrumb, Layout, Menu, theme , Table, Row, Col} from 'antd';
 import MemberForm from './Form';
 import Detail from '../family/Accordion.jsx';
 import './style.css';
-import { useQuery, gql } from '@apollo/client'; // Import necessary Apollo Client hooks
-
+import { useQuery, gql } from '@apollo/client'; 
 const { Content, Footer, Sider } = Layout;
+import { GET_ALL_MEMBERS } from '../../utils/mutations.js'; 
 
-const GET_ALL_MEMBERS = gql`
-  query GetAllMembers {
-    getAllMembers {
-      _id
-      memberNumber
-      firstName
-      lastName
-      baptismalName
-      gender
-      startDate
-      endDate
-      email
-      primaryPhone
-      secondaryPhone
-      paymentFlag
-      created_date
-      addresses {
-        street
-        street2
-        city
-        state
-        zip
-        country
-        created_date
-      }
-      memberFamilies {
-        id
-        firstName
-        middleName
-        lastName
-        baptismalName
-        gender
-        relationShip
-        createdDate
-      }
-      payment {
-        amount
-        month
-        year
-        paymentMethod
-        paymentDate
-        createdDate
-      }
-    }
-  }
-`;
+
 
 const items = [
   {
@@ -89,7 +44,6 @@ const Member = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
-  // Use Apollo Client's useQuery hook to fetch data
   const { loading, error, data } = useQuery(GET_ALL_MEMBERS);
 
   if (loading) return <p>Loading...</p>;
@@ -126,38 +80,64 @@ const Member = () => {
         dataIndex: 'lastName',
         key: 'lastName',
       },
+      {
+        title: 'Baptismal Name',
+        dataIndex: 'baptismalName',
+        key: 'baptismalName',
+      },
+      {
+        title: 'Gender',
+        dataIndex: 'gender',
+        key: 'gender',
+      },
+      // {
+      //   title: 'Start Date',
+      //   dataIndex: 'startDate',
+      //   key: 'startDate',
+      //   render: (startDate) => new Date(parseInt(startDate)).toLocaleDateString(),
+      // },
+      // {
+      //   title: 'End Date',
+      //   dataIndex: 'endDate',
+      //   key: 'endDate',
+      //   render: (endDate) => new Date(parseInt(endDate)).toLocaleDateString(),
+      // },
+      {
+        title: 'Email',
+        dataIndex: 'email',
+        key: 'email',
+      },
+      {
+        title: 'Primary Phone',
+        dataIndex: 'primaryPhone',
+        key: 'primaryPhone',
+      },
+
       // Add more columns as needed
     ];
-  
+    
   return (
-    <Layout style={{ minHeight: '100vh', background: 'blue' }}>
-      <Sider className="sideMenu" collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-        <div className="demo-logo-vertical " />
-        <Menu theme="dark" className="sideMenu" defaultSelectedKeys={['1']} mode="inline">
-          {renderMenuItems(items)}
-        </Menu>
-      </Sider>
-      <Layout>
-        <Content
-          style={{
-            margin: '016px',
-            // background:' blue',
-          }}
-        >
-       
-         
-                       <Table dataSource={data.getAllMembers} columns={columns} />
-
-        </Content>
-
-        <Footer
-          style={{
-            textAlign: 'center',
-          }}
-        >
-          {/* Ant Design ©{new Date().getFullYear()} Created by Ant UED */}
-        </Footer>
-      </Layout>
+<Layout>
+      <div className='container'>
+        <Row gutter={[16, 16]}>
+          <Col span={6}> 
+            <Sider className="sideMenu" collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+              <div className="demo-logo-vertical " />
+              <Menu theme="dark" className="sideMenu" defaultSelectedKeys={['1']} mode="inline">
+                {renderMenuItems(items)}
+              </Menu>
+            </Sider>
+          </Col>
+          <Col span={18}> 
+          <Content style={{ marginLeft: '200px' }}>
+              <div >
+                <Table dataSource={data.getAllMembers} columns={columns} />
+              </div>
+            </Content>
+          </Col>
+        </Row>
+        <Footer style={{ textAlign: 'center' }}>{/* Ant Design ©{new Date().getFullYear()} Created by Ant UED */}</Footer>
+      </div>
     </Layout>
   );
 };

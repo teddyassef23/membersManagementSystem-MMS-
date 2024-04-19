@@ -24,7 +24,7 @@ export const ADD_USER = gql`
   }
 `;
 
-const GET_ALL_MEMBERS = gql`
+export const GET_ALL_MEMBERS = gql`
   query GetAllMembers {
     getAllMembers {
       _id
