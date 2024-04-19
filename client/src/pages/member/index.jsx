@@ -6,6 +6,7 @@ import {
 } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import MemberForm from './Form'
+import Detail from "../family/Accordion.jsx";
 import './style.css'
 const {  Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
@@ -80,7 +81,6 @@ const Member = () => {
         </Menu>
       </Sider>
       <Layout >
-      <a className='logout' >Logout </a>
         <Content
         
           style={{
@@ -105,7 +105,7 @@ const Member = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-             <MemberForm/>
+             <Detail/>
           </div>
         </Content>
       

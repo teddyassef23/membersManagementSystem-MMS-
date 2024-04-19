@@ -200,7 +200,7 @@ function MemberForm() {
 
 
           <Divider></Divider>
-          <Detail />
+          {/* <Detail /> */}
           <label for="lang">Your Language </label>
           <input
             type="checkbox"
