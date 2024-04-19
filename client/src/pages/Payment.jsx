@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa'; 
 import Auth from '../utils/auth';
 import '../css/payment.css'
+import PaymentElection from '../components/PaymentElection';
 
 const Payment = () => {
     const [paymentInfo, setPaymentInfo] = useState({
@@ -35,6 +36,7 @@ const Payment = () => {
     return (
         <div className='payment-form'>
             <h2 className='pmt-title'>Payment</h2>
+            <PaymentElection />
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="cardNumber" className='label'>Card Number</label>

@@ -37,6 +37,7 @@ const Header = () => {
             <ul className="navbar-nav ml-auto">
               {/* Home link */}
 
+
               {Auth.loggedIn()? ( // Verifica si el usuario ha iniciado sesión  
                 <>
                     <li className="nav-item">
@@ -59,6 +60,7 @@ const Header = () => {
                        <Link className="nav-link" to="/Signup" onClick={toggleMenu}>Sign Up</Link>
                    </li>
                 </>
+
               )}
             </ul>
           </Navbar.Collapse>
