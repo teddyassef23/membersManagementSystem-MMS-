@@ -42,10 +42,11 @@ const Login = () => {
 
   return (
     <>
-      <main className="flex-row justify-center mb-4">
-        <div className="col-12 col-lg-10">
-          <div className="card login-card">
-            <div className="card-header bg-white text-light p-2">
+          <div className="card login-card"  style={{
+    marginLeft: '500px !important',
+    display: 'inline',
+  }}>
+            <div className="card-header bg-white text-light">
               <img src={logo} alt="Logo" className="logo" />
               <div className="login">Login</div>
             </div>
@@ -94,9 +95,6 @@ const Login = () => {
               )}
             </div>
           </div>
-        </div>
-      </main>
-      <Footer /> {/* Render the Footer component here */}
     </>
   );
 };

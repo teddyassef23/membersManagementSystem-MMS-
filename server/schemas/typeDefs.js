@@ -72,7 +72,7 @@ const typeDefs = gql`
     street2: String
     city: String!
     state: String!
-    zip: Int!
+    zip: String!
     country: String!
     created_date: String!
   }
@@ -82,7 +82,7 @@ const typeDefs = gql`
     street2: String
     city: String!
     state: String!
-    zip: Int!
+    zip: String!
     country: String!
     created_date: String!
   }

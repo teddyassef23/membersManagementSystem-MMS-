@@ -93,7 +93,7 @@ const Signup = () => {
           </div>
         </div>
       </main>
-      <Footer /> {/* Render the Footer component here */}
+      {/* <Footer /> Render the Footer component here */}
     </>
   );
 };
