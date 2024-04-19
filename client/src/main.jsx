@@ -2,11 +2,12 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from './App.jsx';
+import Member from './pages/member';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import SingleThought from './pages/SingleThought';
-import Profile from './pages/Profile';
+import AddNewMember from './pages/member/MemberForm.css';
+// import FindMember from './pages/../components/';
 import ErrorPage from './pages/ErrorPage';
 // import PaymentElection from './pages/PaymentElection';
 // import Payment from './pages/Payment';
@@ -27,15 +28,21 @@ const router = createBrowserRouter([
         path: '/signup',
         element: <Signup />
       }, {
-        path: '/profiles/:username',
-        element: <Profile />
-      }, {
-        path: '/me',
-        element: <Profile />
-      }, {
-        path: '/thoughts/:thoughtId',
-        element: <SingleThought />
+        path: '/member',
+        element: <Member />
       },
+       {
+        path: '/newmember',
+        element: <AddNewMember />
+      }, 
+      //  {
+      //   path: '/findmember',
+      //   element: <FindMember />
+      // }, 
+      // {
+      //   path: '/thoughts/:thoughtId',
+      //   element: <SingleThought />
+      // },
       // {
       //   path: '/payment',
       //   element: <Payment />
