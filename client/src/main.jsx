@@ -11,7 +11,7 @@ import ErrorPage from './pages/ErrorPage';
 import Member from './pages/member/index.jsx';
 import MemberForm from './pages/member/Form.jsx';
 // import PaymentElection from './pages/PaymentElection';
-// import Payment from './pages/Payment';
+ import Payment from './pages/Payment';
 
 const router = createBrowserRouter([
   {
@@ -50,6 +50,10 @@ const router = createBrowserRouter([
       //   path: '/payment',
       //   element: <Payment />
       // },
+       {
+        path: '/payment',
+         element: <Payment />
+       },
       // {
       //   path: '/paymentElection',
       //   element: <PaymentElection />
