@@ -4,6 +4,8 @@
 
 import "./MemberForm.css";
 import { React, useState } from "react";
+// import { useHistory } from 'react-router-dom'; // Import useHistory hook
+
 import Detail from "../family/Accordion.jsx";
 import { Divider, Select } from "antd";
 import Address from "./../family/Address";
@@ -11,6 +13,8 @@ import { useMutation, gql } from '@apollo/client';
 import { ADD_MEMBER } from '../../utils/mutations.js'; 
 
 function MemberForm() {
+  // const history = useHistory(); // Initialize useHistory hook
+
   // const [memberId, setMemberId] = useState("");
   // const [firstName, setFirstName] = useState("");
   // const [middleName, setMiddleName] = useState("");
@@ -53,9 +57,10 @@ function MemberForm() {
           input: memberData,
         },
       });
-      console.log(data); // Handle success response
+
+      console.log(data); 
     } catch (error) {
-      console.error(error); // Handle error
+      console.error(error); 
     }
   };
 
