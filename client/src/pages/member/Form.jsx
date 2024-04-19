@@ -25,7 +25,6 @@ function MemberForm() {
     primaryPhone: "",
     secondaryPhone: "",
     startDate:"2024-11-11",
-    created_date:"2024-11-11",
 
     // familySize: "",
     email: "",
@@ -38,6 +37,8 @@ function MemberForm() {
         state: "",
         country: "",
         zip: "",
+        created_date:"2024-11-11",
+
       },
     ],
   });
