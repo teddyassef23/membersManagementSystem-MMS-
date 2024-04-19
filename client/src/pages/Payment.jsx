@@ -1,10 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
-import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa'; 
-import Auth from '../utils/auth';
-import '../css/payment.css'
+import '../components/css/payment.css';
 import PaymentElection from '../components/PaymentElection';
 
 const Payment = () => {
@@ -22,8 +17,6 @@ const Payment = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Perform payment processing logic here
-        console.log(paymentInfo);
         // Reset form fields
         setPaymentInfo({
             cardNumber: '',
