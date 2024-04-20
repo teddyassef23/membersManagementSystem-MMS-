@@ -43,6 +43,10 @@ body {
   background-color: #6b8c1f;
   padding: 20px;
 }
+.note{
+  font-style: italic;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
 
 
 
