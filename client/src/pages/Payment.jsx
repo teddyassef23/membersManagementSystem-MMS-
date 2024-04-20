@@ -1,6 +1,13 @@
 import { useState } from 'react';
 import '../components/css/payment.css';
+// import from ''
 import PaymentElection from '../components/PaymentElection';
+import DatePick from '../components/Date';
+import CardComp from '../components/Card/Card';
+import { Flex, Input } from 'antd';
+
+
+const { TextArea } = Input;
 
 const Payment = () => {
     const [paymentInfo, setPaymentInfo] = useState({
@@ -27,20 +34,29 @@ const Payment = () => {
     };
 
     return (
-        <div className='payment-form'>
-            <h2 className='pmt-title'>Payment</h2>
-            <PaymentElection />
-            <form onSubmit={handleSubmit}>
+        <div >
+          
+            
+            {/* <PaymentElection /> */} 
+  
+            <form className='' onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="cardNumber" className='label'>Card Number</label>
-                    <input
-                        type="text"
-                        id="cardNumber"
-                        name="cardNumber"
-                        value={paymentInfo.cardNumber}
-                        onChange={handleInputChange}
-                    />
+                <label htmlFor="cardNumber" className='label'>Pay For</label>
+                <Flex vertical gap={32}>
+                      <TextArea
+                          showCount
+                          maxLength={100}
+                        //   onChange={onChange}
+                          placeholder="disable resize"
+                              style={{
+                                          height: 120,
+                                          resize: 'none',
+                                      }}
+                        />  
+                   </Flex>
+                   
                 </div>
+
                 <div>
                     <label htmlFor="cardHolder" className='label'>Card Holder</label>
                     <input
@@ -51,26 +67,9 @@ const Payment = () => {
                         onChange={handleInputChange}
                     />
                 </div>
-                <div>
-                    <label htmlFor="expirationDate" className='label'>Expiration Date</label>
-                    <input
-                        type="text"
-                        id="expirationDate"
-                        name="expirationDate"
-                        value={paymentInfo.expirationDate}
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="cvv" className='label'>CVV</label>
-                    <input
-                        type="text"
-                        id="cvv"
-                        name="cvv"
-                        value={paymentInfo.cvv}
-                        onChange={handleInputChange}
-                    />
-                </div>
+                 <label htmlFor="cardNumber" className='label'>Pay Date</label>
+                <DatePick/>     
+         
                 <button type="submit">Submit Payment</button>
             </form>
         </div>
