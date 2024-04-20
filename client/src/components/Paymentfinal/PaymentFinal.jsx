@@ -12,7 +12,7 @@ const PaymentFinal = () => (
       <CardComp/>
     </Col>
     <Col xs={30} sm={26} md={22} lg={4} xl={4}>
-      Col
+      
     </Col>
     <Col xs={2} sm={4} md={6} lg={8} xl={10}>
       <Payment/>

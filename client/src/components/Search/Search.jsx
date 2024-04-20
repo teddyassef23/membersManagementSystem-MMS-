@@ -7,7 +7,7 @@ const SearchCom = () => (
   <Space direction="vertical">
 
   
-    <Search placeholder="input search text" onSearch={onSearch} enterButton />
+    {/* <Search placeholder="input search text" onSearch={onSearch} enterButton /> */}
     <Search
       placeholder="input search text"
       allowClear
