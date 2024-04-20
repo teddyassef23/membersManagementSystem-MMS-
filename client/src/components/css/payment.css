@@ -1,15 +1,18 @@
 .payment-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #b92a2a;
-    padding: 20px;
-}
+    display:block;
+    margin-left: 50%;
+    width: 50%;
+    align-items: end;
+    align-content: end;
+    justify-content: end;
 
-body {
-    background-color: rgb(215, 252, 52);
 }
-
+.sideMenu{
+    background-color: brown;
+}
+h1{
+    background-color: brown;
+}
 .payment-form .label .pmt-title {
     color: white;
 }

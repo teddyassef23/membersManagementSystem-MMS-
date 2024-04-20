@@ -39,14 +39,17 @@ const Header = () => {
 
               {Auth.loggedIn()? ( // Verifica si el usuario ha iniciado sesión  
                 <>
-                    <li className="nav-item">
-                      <Link className="nav-link" to="/logout" onClick={handleLogout}>Logout</Link>
-                   </li>
                    <li className="nav-item">
                        <Link className="nav-link" to="/payment" onClick={toggleMenu}>Contribute</Link>
-                   </li>
-                   <li className="nav-item">
+                   </li> 
+                    <li className="nav-item">
                        <Link className="nav-link" to="/members" onClick={toggleMenu}>Members</Link>
+                   </li>
+                    <li className="nav-item">
+                       <Link className="nav-link" to="/add-member" onClick={toggleMenu}>New Member</Link>
+                   </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/logout" onClick={handleLogout}>Logout</Link>
                    </li>
                    </>
                ) : (

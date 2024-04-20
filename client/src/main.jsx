@@ -11,7 +11,7 @@ import ErrorPage from './pages/ErrorPage';
 import Member from './pages/member/index.jsx';
 import MemberForm from './pages/member/Form.jsx';
 // import PaymentElection from './pages/PaymentElection';
- import Payment from './pages/Payment';
+ import PaymentFinal from './components/Paymentfinal/PaymentFinal';
 
 const router = createBrowserRouter([
   {
@@ -28,16 +28,7 @@ const router = createBrowserRouter([
       }, {
         path: '/signup',
         element: <Signup />
-      }, {
-        path: '/profiles/:username',
-        element: <Profile />
-      }, {
-        path: '/me',
-        element: <Profile />
-      }, {
-        path: '/thoughts/:thoughtId',
-        element: <SingleThought />
-      },
+      }, 
       {
         path: '/members',
         element: <Member />
@@ -52,7 +43,7 @@ const router = createBrowserRouter([
       // },
        {
         path: '/payment',
-         element: <Payment />
+         element: <PaymentFinal />
        },
       // {
       //   path: '/paymentElection',
