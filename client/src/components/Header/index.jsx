@@ -14,9 +14,9 @@ const Header = () => {
   };
 
   // Function to handle logout
-  const handleLogout = (event) => {
-    event.preventDefault();
+  const handleLogout = () => {
     Auth.logout();
+    window.location.href = '/'; // Redirect to the home page after logout
   };
 
   return (
@@ -36,8 +36,7 @@ const Header = () => {
             <ul className="navbar-nav ml-auto">
               {/* Home link */}
 
-
-              {Auth.loggedIn()? ( // Verifica si el usuario ha iniciado sesión  
+              {Auth.loggedIn()? ( // Check if the user is logged in  
                 <>
                    <li className="nav-item">
                        <Link className="nav-link" to="/payment" onClick={toggleMenu}>Payments</Link>
