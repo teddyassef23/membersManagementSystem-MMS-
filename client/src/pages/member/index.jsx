@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { DollarCircleOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme , Table, Row, Col} from 'antd';
 import MemberForm from './Form';
-import Detail from '../family/Accordion.jsx';
+import Detail from '../../components/Accordion.jsx';
 import './style.css';
 import { useQuery, gql } from '@apollo/client'; 
 const { Content, Footer, Sider } = Layout;

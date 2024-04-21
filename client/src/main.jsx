@@ -5,13 +5,12 @@ import App from './App.jsx';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import SingleThought from './pages/SingleThought';
-import Profile from './pages/Profile';
 import ErrorPage from './pages/ErrorPage';
 import Member from './pages/member/index.jsx';
 import MemberForm from './pages/member/Form.jsx';
 // import PaymentElection from './pages/PaymentElection';
  import PaymentFinal from './components/Paymentfinal/PaymentFinal';
+// import AddFamily from './pages/family/AddFamily.jsx';
 
 const router = createBrowserRouter([
   {
@@ -37,10 +36,10 @@ const router = createBrowserRouter([
         path: '/add-member',
         element: <MemberForm />
       },
-      // {
-      //   path: '/payment',
-      //   element: <Payment />
-      // },
+      //  {
+      //    path: '/add-member/add-family',
+      //    element: <AddFamily />
+      //  },
        {
         path: '/payment',
          element: <PaymentFinal />
