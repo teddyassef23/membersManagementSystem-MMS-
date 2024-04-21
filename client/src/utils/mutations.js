@@ -23,6 +23,24 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+// export const ADD_FAMILY =gql`
+
+// mutation addfamily($input: FamilyInput!) {
+  
+//   addfamily(familyInput: $input){
+//     _id
+//     firstName
+//     middleName
+//     lastName
+//     baptismalName
+//     gender
+//     relationShip
+//     createdDate
+//   }
+// }
+//                       )`
+
 export const ADD_MEMBER = gql`
   mutation addMember($input: MemberInput!) {
     addMember(memberInput: $input) {

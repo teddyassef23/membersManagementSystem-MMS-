@@ -1,7 +1,7 @@
 import React from 'react';
 import { Collapse, Space } from 'antd';
-import Family from './Family'
-import Address from './Address'
+import Family from '../pages/family/Family'
+import Address from '../pages/Address/Address'
 const text = `
   A dog is a type of domesticated animal.
   Known for its loyalty and faithfulness,
