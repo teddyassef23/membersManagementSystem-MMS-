@@ -24,6 +24,55 @@ export const ADD_USER = gql`
   }
 `;
 
+
+export const GET_MEMBER = gql`
+  query getMember($memberId: ID!) {
+    getMember(memberId: $memberId) {
+      _id
+      memberNumber
+      firstName
+      lastName
+      baptismalName
+      gender
+      startDate
+      endDate
+      email
+      primaryPhone
+      secondaryPhone
+      paymentFlag
+      created_date
+      addresses {
+        street
+        street2
+        city
+        state
+        zip
+        country
+        created_date
+      }
+      memberFamilies {
+        id
+        firstName
+        middleName
+        lastName
+        baptismalName
+        gender
+        relationShip
+        createdDate
+      }
+      payment {
+        amount
+        month
+        year
+        paymentMethod
+        paymentDate
+        createdDate
+      }
+    }
+  }
+`;
+
+
 // export const ADD_FAMILY =gql`
 
 // mutation addfamily($input: FamilyInput!) {
