@@ -26,6 +26,52 @@ export const QUERY_THOUGHTS = gql`
   }
 `;
 
+export const GET_MEMBER = gql`
+  query getMember($memberId: ID!) {
+    getMember(memberId: $memberId) {
+      _id
+      memberNumber
+      firstName
+      lastName
+      baptismalName
+      gender
+      startDate
+      endDate
+      email
+      primaryPhone
+      secondaryPhone
+      paymentFlag
+      created_date
+      addresses {
+        street
+        street2
+        city
+        state
+        zip
+        country
+        created_date
+      }
+      memberFamilies {
+        id
+        firstName
+        middleName
+        lastName
+        baptismalName
+        gender
+        relationShip
+        createdDate
+      }
+      payment {
+        amount
+        month
+        year
+        paymentMethod
+        paymentDate
+        createdDate
+      }
+    }
+  }
+`;
 export const QUERY_SINGLE_THOUGHT = gql`
   query getSingleThought($thoughtId: ID!) {
     thought(thoughtId: $thoughtId) {
