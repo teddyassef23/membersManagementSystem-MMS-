@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { DollarCircleOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme , Table, Row, Col} from 'antd';
 import MemberForm from './Form';
-import Detail from '../family/Accordion.jsx';
+import Detail from '../../components/Accordion.jsx';
 import './style.css';
 import { useQuery, gql } from '@apollo/client'; 
 const { Content, Footer, Sider } = Layout;
 import { GET_ALL_MEMBERS } from '../../utils/mutations.js'; 
+import "./MemberForm.css";
 
 
 
@@ -118,26 +119,31 @@ const Member = () => {
     
   return (
 <Layout>
-      <div className='container'>
+      <div className='container App'>
+      
+       
+      
         <Row gutter={[16, 16]}>
-          <Col span={6}> 
+          {/* <Col span={6}> 
             <Sider className="sideMenu" collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
               <div className="demo-logo-vertical " />
               <Menu theme="dark" className="sideMenu" defaultSelectedKeys={['1']} mode="inline">
                 {renderMenuItems(items)}
               </Menu>
             </Sider>
-          </Col>
-          <Col span={18}> 
-          <Content style={{ marginLeft: '200px' }}>
-              <div >
+          </Col> */}
+          <Col span={18}>
+             
+          {/* <Content style={{ marginLeft: '200px' }}> */}
+              <div ><h1>All Members </h1>
                 <Table dataSource={data.getAllMembers} columns={columns} />
               </div>
-            </Content>
+            {/* </Content> */}
           </Col>
         </Row>
         <Footer style={{ textAlign: 'center' }}>{/* Ant Design ©{new Date().getFullYear()} Created by Ant UED */}</Footer>
-      </div>
+      </div> 
+     
     </Layout>
   );
 };

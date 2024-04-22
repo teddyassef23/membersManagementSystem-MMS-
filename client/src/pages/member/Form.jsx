@@ -5,21 +5,26 @@
 import "./MemberForm.css";
 import { React, useState } from "react";
 // import { useHistory } from 'react-router-dom'; // Import useHistory hook
-
-import Detail from "../family/Accordion.jsx";
+import addFamily from './../family/Family.jsx'
 import { Divider, Select } from "antd";
-import Address from "./../family/Address";
 import { useMutation, gql } from '@apollo/client';
-import { ADD_MEMBER } from '../../utils/mutations.js'; 
+import { ADD_MEMBER } from '../../utils/mutations.js';
+import { Link } from "react-router-dom";
 
 function MemberForm() {
   // const history = useHistory(); // Initialize useHistory hook
 
+  // const [email, setEmail] = useState("");
+  // const [selectedOption, setSelectedOption] = useState("");
   // const [memberId, setMemberId] = useState("");
   // const [firstName, setFirstName] = useState("");
   // const [middleName, setMiddleName] = useState("");
   // const [lastName, setLastName] = useState("");
-  const [selectedItems, setSelectedItems] = useState([]);
+  // const [gender, setGender] = useState("male");
+
+
+  const [addMember] = useMutation(ADD_MEMBER);
+
   const [memberData, setMemberData] = useState({
     memberNumber: "",
     firstName: "",
@@ -28,7 +33,7 @@ function MemberForm() {
     baptismalName: "",
     primaryPhone: "",
     secondaryPhone: "",
-    startDate:"2024-11-11",
+    startDate: "2024-11-11",
 
     // familySize: "",
     email: "",
@@ -41,13 +46,12 @@ function MemberForm() {
         state: "",
         country: "",
         zip: "",
-        created_date:"2024-11-11",
+        created_date: "2024-11-11",
 
       },
     ],
   });
 
-  const [addMember] = useMutation(ADD_MEMBER);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -58,9 +62,9 @@ function MemberForm() {
         },
       });
 
-      console.log(data); 
+      console.log(data);
     } catch (error) {
-      console.error(error); 
+      console.error(error);
     }
   };
 
@@ -82,27 +86,12 @@ function MemberForm() {
     });
   };
 
-  
-  const handleFamilySizeChange = (value) => {
-    setMemberData({
-      ...memberData,
-      familySize: value,
-    });
-  };
 
 
-  const [email, setEmail] = useState("");
-  const OPTIONS = ["Apples", "Nails", "Bananas", "Helicopters"];
 
-  const [gender, setGender] = useState("male");
-  const [subjects, setSubjects] = useState({
-    english: true,
-    Amharic: false,
-    Tigeria: false,
-    Oromo: false,
-  });
 
-  const [selectedOption, setSelectedOption] = useState("");
+
+
 
 
   const handleSubjectChange = (sub) => {
@@ -112,18 +101,16 @@ function MemberForm() {
     }));
   };
 
-  var disable = true;
 
-  const addFamily = () => {
-    // call add family f
-  };
+
+
 
   return (
     <div className="App ">
       <h1>New Member Registration </h1>
       <div className="new-line"></div>
       <fieldset>
-      <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <section className="container ">
             <label for="firstname">Member ID</label>
             <input
@@ -147,7 +134,7 @@ function MemberForm() {
             />
             <label for="middlename">Middle name</label>
             <input
-            type="text"
+              type="text"
               name="middleName"
               id="middleName"
               value={memberData.middleName}
@@ -173,38 +160,30 @@ function MemberForm() {
               onChange={handleChange2}
               placeholder="Weld-Meskael"
             />
-            <label for="familySize"> Family size </label>
+
+
+
+            <label htmlFor="male">Male</label>
+
             <input
-              type="text"
-              name="familySize"
-              id="familySize"
-              // value={memberData.familySize}
-              // onChange={handleChange}
-              placeholder="Weld-Meskael"
+              type="radio"
+              name="gender"
+              id="male"
+              value="male"
+              checked={memberData.gender === "male"}
+              onChange={handleChange2}
             />
-                         
-
-                          <label htmlFor="male">Male</label>
+            <label htmlFor="female">Female</label>
 
             <input
-                type="radio"
-                name="gender"
-                id="male"
-                value="male"
-                checked={memberData.gender === "male"}
-                onChange={handleChange2}
-                />
-                            <label htmlFor="female">Female</label>
+              type="radio"
+              name="gender"
+              id="female"
+              value="female"
+              checked={memberData.gender === "female"}
+              onChange={handleChange2}
+            />
 
-              <input
-                type="radio"
-                name="gender"
-                id="female"
-                value="female"
-                checked={memberData.gender === "female"}
-                onChange={handleChange2}
-                />
-          
 
             <label for="primaryPhone">Primary Phone </label>
             <input
@@ -235,102 +214,69 @@ function MemberForm() {
             />
           </section>
           <div className="new-line"></div>
-            <Divider>Primary Address</Divider>
-            <div className='container new-line'>
-              <label>Street</label>
-              <input
-                name="street"
-                placeholder="Street"
-                type="text"
-                value={memberData.addresses[0].street}
-   onChange={(e) => handleChange(e, 0)}
-              />
-              <label>Street 2</label>
-              <input
-                name="street2"
-                placeholder="Street 2"
-                type="text"
-                value={memberData.addresses[0].street2}
-   onChange={(e) => handleChange(e, 0)}
-              />
-              <label>City</label>
-              <input
-                name="city"
-                placeholder="City"
-                type="text"
-                value={memberData.addresses[0].city}
-                onChange={(e) => handleChange(e, 0)}
-                />
-              <label>State</label>
-              <input
-                name="state"
-                placeholder="State"
-                type="text"
-                value={memberData.addresses[0].state}
-   onChange={(e) => handleChange(e, 0)}
-              />
-              <label>Country</label>
-              <input
-                name="country"
-                placeholder="Country"
-                type="text"
-                value={memberData.addresses[0].country}
-   onChange={(e) => handleChange(e, 0)}
-              />
-              <label>Zip Code</label>
-              <input
-                name="zip"
-                placeholder="Zip Code"
-                type="number"
-                value={memberData.addresses[0].zip}
-   onChange={(e) => handleChange(e, 0)}
-              />
-        </div>
+          <Divider>Primary Address</Divider>
+          <div className='container new-line'>
+            <label>Street</label>
+            <input
+              name="street"
+              placeholder="Street"
+              type="text"
+              value={memberData.addresses[0].street}
+              onChange={(e) => handleChange(e, 0)}
+            />
+            <label>Street 2</label>
+            <input
+              name="street2"
+              placeholder="Street 2"
+              type="text"
+              value={memberData.addresses[0].street2}
+              onChange={(e) => handleChange(e, 0)}
+            />
+            <label>City</label>
+            <input
+              name="city"
+              placeholder="City"
+              type="text"
+              value={memberData.addresses[0].city}
+              onChange={(e) => handleChange(e, 0)}
+            />
+            <label>State</label>
+            <input
+              name="state"
+              placeholder="State"
+              type="text"
+              value={memberData.addresses[0].state}
+              onChange={(e) => handleChange(e, 0)}
+            />
+            <label>Country</label>
+            <input
+              name="country"
+              placeholder="Country"
+              type="text"
+              value={memberData.addresses[0].country}
+              onChange={(e) => handleChange(e, 0)}
+            />
+            <label>Zip Code</label>
+            <input
+              name="zip"
+              placeholder="Zip Code"
+              type="number"
+              value={memberData.addresses[0].zip}
+              onChange={(e) => handleChange(e, 0)}
+            />
+          </div>
 
           <Divider></Divider>
-          {/* <Detail />
-          <label for="lang">Your Language </label>
-          <input
-            type="checkbox"
-            name="lang"
-            id="english"
-            checked={subjects.english === true}
-            onChange={(e) => handleSubjectChange("english")}
-          />
-          English
-          <input
-            type="checkbox"
-            name="Amharic"
-            id="Amharic"
-            checked={subjects.Amharic === true}
-            onChange={(e) => handleSubjectChange("Amharic")}
-          />
-          Amharic
-          <input
-            disabled={disable}
-            type="checkbox"
-            name="Tigeria"
-            id="Tigeria"
-            checked={subjects.Tigeria === true}
-            onChange={(e) => handleSubjectChange("Tigeria")}
-          />
-          Tigeria
-          <input
-            disabled={disable}
-            type="checkbox"
-            name="Oromo"
-            id="Oromo"
-            checked={subjects.Oromo === true}
-            onChange={(e) => handleSubjectChange("Oromo")}
-          />
-          Oromo
-          {/* {/* <div className="new-line"></div>
+
+
+
+          <li className="nav-item">
+            <Link className="nav-link" to='./add-family' onClick={() => addFamily()}>Add Member's family</Link>
+          </li>
+
           <Divider></Divider>
-             <h1>Dependents or/and Member's Family</h1>  */} 
-          <button type="button" onClick={() => addFamily()}>
-            Edit
-          </button>
           <button type="submit" value="Submit" onClick={(e) => handleSubmit()}>
+
             Submit
           </button>
         </form>

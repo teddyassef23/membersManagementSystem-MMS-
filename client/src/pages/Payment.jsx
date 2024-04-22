@@ -1,13 +1,18 @@
 import { useState } from 'react';
 import '../components/css/payment.css';
-import PaymentElection from '../components/PaymentElection';
+// import from ''
+// import PaymentElection from '../components/PaymentElection';
+import DatePick from '../components/Date';
+import { Flex, Input } from 'antd';
+
+
+const { TextArea } = Input;
 
 const Payment = () => {
     const [paymentInfo, setPaymentInfo] = useState({
-        cardNumber: '',
-        cardHolder: '',
-        expirationDate: '',
-        cvv: ''
+        payFor: '',
+        amount: '',
+
     });
 
     const handleInputChange = (event) => {
@@ -19,58 +24,51 @@ const Payment = () => {
         event.preventDefault();
         // Reset form fields
         setPaymentInfo({
-            cardNumber: '',
-            cardHolder: '',
-            expirationDate: '',
-            cvv: ''
-        });
+            payFor: '',
+            amount: '',
+           });
     };
 
     return (
-        <div className='payment-form'>
-            <h2 className='pmt-title'>Payment</h2>
-            <PaymentElection />
-            <form onSubmit={handleSubmit}>
+        <div >
+
+
+            {/* <PaymentElection /> */}
+
+            <form className='' onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="cardNumber" className='label'>Card Number</label>
+                    <label htmlFor="cardNumber" className='label'>Pay For</label>
+                    <Flex vertical gap={32}>
+                        <TextArea
+                            showCount
+                            maxLength={100}
+                              onChange={paymentInfo.paymentMethod}
+                              id='payFor'
+                            placeholder="disable resize"
+                          
+                            style={{
+                                height: 120,
+                                resize: 'none',
+                            }}
+                        />
+                    </Flex>
+
+                </div>
+
+                <div>
+                    <label htmlFor="cardHolder" className='label'> Amount</label>
                     <input
                         type="text"
-                        id="cardNumber"
-                        name="cardNumber"
-                        value={paymentInfo.cardNumber}
+                        id="amount"
+                        name="amount"
+                        // placeholder="disable resize"
+                        value={paymentInfo.amount}
                         onChange={handleInputChange}
                     />
                 </div>
-                <div>
-                    <label htmlFor="cardHolder" className='label'>Card Holder</label>
-                    <input
-                        type="text"
-                        id="cardHolder"
-                        name="cardHolder"
-                        value={paymentInfo.cardHolder}
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="expirationDate" className='label'>Expiration Date</label>
-                    <input
-                        type="text"
-                        id="expirationDate"
-                        name="expirationDate"
-                        value={paymentInfo.expirationDate}
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="cvv" className='label'>CVV</label>
-                    <input
-                        type="text"
-                        id="cvv"
-                        name="cvv"
-                        value={paymentInfo.cvv}
-                        onChange={handleInputChange}
-                    />
-                </div>
+                <label htmlFor="cardNumber" className='label'>Pay Date</label>
+                <DatePick />
+
                 <button type="submit">Submit Payment</button>
             </form>
         </div>

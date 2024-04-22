@@ -5,13 +5,12 @@ import App from './App.jsx';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import SingleThought from './pages/SingleThought';
-import Profile from './pages/Profile';
 import ErrorPage from './pages/ErrorPage';
 import Member from './pages/member/index.jsx';
 import MemberForm from './pages/member/Form.jsx';
 // import PaymentElection from './pages/PaymentElection';
- import Payment from './pages/Payment';
+ import PaymentFinal from './components/Paymentfinal/PaymentFinal';
+// import AddFamily from './pages/family/AddFamily.jsx';
 
 const router = createBrowserRouter([
   {
@@ -28,16 +27,7 @@ const router = createBrowserRouter([
       }, {
         path: '/signup',
         element: <Signup />
-      }, {
-        path: '/profiles/:username',
-        element: <Profile />
-      }, {
-        path: '/me',
-        element: <Profile />
-      }, {
-        path: '/thoughts/:thoughtId',
-        element: <SingleThought />
-      },
+      }, 
       {
         path: '/members',
         element: <Member />
@@ -46,13 +36,13 @@ const router = createBrowserRouter([
         path: '/add-member',
         element: <MemberForm />
       },
-      // {
-      //   path: '/payment',
-      //   element: <Payment />
-      // },
+      //  {
+      //    path: '/add-member/add-family',
+      //    element: <AddFamily />
+      //  },
        {
         path: '/payment',
-         element: <Payment />
+         element: <PaymentFinal />
        },
       // {
       //   path: '/paymentElection',
