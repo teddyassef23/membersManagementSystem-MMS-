@@ -42,8 +42,19 @@ const Payment = () => {
                 variables: {
                     memberId: paymentInfo.memberId,
                     paymentInput: {
-                        payFor: paymentInfo.payFor,
                         amount: parseFloat(paymentInfo.amount),
+                    },
+                    memberInput: {
+                        // Include any additional member data you want to submit
+                        // memberId: paymentInfo.memberId,
+                        memberNumber: searchedMember.memberNumber,
+                        firstName: searchedMember.firstName,
+                        lastName: searchedMember.lastName,
+                        startDate: searchedMember.startDate,
+                        endDate: searchedMember.endDate,
+                        gender: searchedMember.gender
+    
+                        // Add other member fields here
                     },
                 },
             });
@@ -84,23 +95,7 @@ const Payment = () => {
                 )}
 
                 {/* Render payment form */}
-                <div>
-                    <label htmlFor="cardNumber" className='label'>Pay For</label>
-                    <Flex vertical gap={32}>
-                        <TextArea
-                            showCount
-                            maxLength={100}
-                            id='payFor'
-                            placeholder="Disable resize"
-                            style={{
-                                height: 120,
-                                resize: 'none',
-                            }}
-                            onChange={handleInputChange}
-                            value={paymentInfo.payFor}
-                        />
-                    </Flex>
-                </div>
+            
     
                 <div>
                     <label htmlFor="cardHolder" className='label'>Amount</label>
