@@ -4,9 +4,12 @@ import { GET_MEMBER } from '../../utils/queries';
 import { UPDATE_MEMBER } from '../../utils/mutations';
 import { Divider } from 'antd';
 import { useParams } from 'react-router-dom'; // Import useParams hook
+import { useNavigate } from 'react-router-dom';
 
 
 function EditMemberForm() {
+    const navigateTo = useNavigate();
+
     const { memberId } = useParams(); // Fetch memberId from URL params
     const [memberData, setMemberData] = useState({});
     const { loading, error, data } = useQuery(GET_MEMBER, {
@@ -32,6 +35,7 @@ function EditMemberForm() {
           memberInput: memberInputWithoutTypename, // Send memberInput without __typename
         },
       });
+navigateTo('/members')
     } catch (error) {
       console.error(error);
     }
