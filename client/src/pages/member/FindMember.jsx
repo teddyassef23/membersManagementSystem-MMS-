@@ -399,6 +399,6 @@ function MemberForm() {
       </fieldset>
     </div>
   );
-}
+};
 
 export default MemberForm;

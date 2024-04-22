@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 import { DollarCircleOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme , Table, Row, Col} from 'antd';
+import { Breadcrumb, Layout, Menu, theme , Table, Row, Col, Space} from 'antd';
 import MemberForm from './Form';
 import Detail from '../../components/Accordion.jsx';
 import './style.css';
@@ -91,18 +93,18 @@ const Member = () => {
         dataIndex: 'gender',
         key: 'gender',
       },
-      // {
-      //   title: 'Start Date',
-      //   dataIndex: 'startDate',
-      //   key: 'startDate',
-      //   render: (startDate) => new Date(parseInt(startDate)).toLocaleDateString(),
-      // },
-      // {
-      //   title: 'End Date',
-      //   dataIndex: 'endDate',
-      //   key: 'endDate',
-      //   render: (endDate) => new Date(parseInt(endDate)).toLocaleDateString(),
-      // },
+      {
+        title: 'Start Date',
+        dataIndex: 'startDate',
+        key: 'startDate',
+        render: (startDate) => new Date(parseInt(startDate)).toLocaleDateString(),
+      },
+      {
+        title: 'End Date',
+        dataIndex: 'endDate',
+        key: 'endDate',
+        render: (endDate) => new Date(parseInt(endDate)).toLocaleDateString(),
+      },
       {
         title: 'Email',
         dataIndex: 'email',
@@ -113,38 +115,44 @@ const Member = () => {
         dataIndex: 'primaryPhone',
         key: 'primaryPhone',
       },
+      {
+        title: 'Action',
+        key: 'action',
+        render: (text, record) => (
+          <Space size="middle">
+            <Link to={`/edit/${record._id}`}>Edit</Link>
+        <Link to={`/delete/${record._id}`}>Delete</Link>
+
+          </Space>
+        ),
+      },
 
       // Add more columns as needed
     ];
     
   return (
-<Layout>
-      <div className='container App'>
-      
-       
-      
-        <Row gutter={[16, 16]}>
-          {/* <Col span={6}> 
-            <Sider className="sideMenu" collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-              <div className="demo-logo-vertical " />
-              <Menu theme="dark" className="sideMenu" defaultSelectedKeys={['1']} mode="inline">
-                {renderMenuItems(items)}
-              </Menu>
-            </Sider>
-          </Col> */}
-          <Col span={18}>
-             
-          {/* <Content style={{ marginLeft: '200px' }}> */}
-              <div ><h1>All Members </h1>
-                <Table dataSource={data.getAllMembers} columns={columns} />
-              </div>
-            {/* </Content> */}
-          </Col>
-        </Row>
-        <Footer style={{ textAlign: 'center' }}>{/* Ant Design ©{new Date().getFullYear()} Created by Ant UED */}</Footer>
-      </div> 
-     
-    </Layout>
+    <Layout>
+    <div className='container'>
+      <Row gutter={[24, 24]}>
+        {/* Left Sidebar - Uncomment if needed */}
+        {/* <Col span={6}> 
+          <Sider className="sideMenu" collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+            <div className="demo-logo-vertical " />
+            <Menu theme="dark" className="sideMenu" defaultSelectedKeys={['1']} mode="inline">
+              {renderMenuItems(items)}
+            </Menu>
+          </Sider>
+        </Col> */}
+        <Col span={24}>
+          <Content style={{ margin: '0 16px' }}>
+            <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
+              <Table dataSource={data.getAllMembers} columns={columns} />
+            </div>
+          </Content>
+        </Col>
+      </Row>
+    </div> 
+  </Layout>
   );
 };
 
