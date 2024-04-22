@@ -10,6 +10,7 @@ import { Divider, Select } from "antd";
 import { useMutation, gql } from '@apollo/client';
 import { ADD_MEMBER } from '../../utils/mutations.js';
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 function MemberForm() {
   // const history = useHistory(); // Initialize useHistory hook
@@ -22,6 +23,7 @@ function MemberForm() {
   // const [lastName, setLastName] = useState("");
   // const [gender, setGender] = useState("male");
 
+  const navigateTo = useNavigate();
 
   const [addMember] = useMutation(ADD_MEMBER);
 
@@ -61,6 +63,7 @@ function MemberForm() {
           input: memberData,
         },
       });
+      navigateTo('/members')
 
       console.log(data);
     } catch (error) {
