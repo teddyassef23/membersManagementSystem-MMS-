@@ -73,6 +73,18 @@ export const GET_MEMBER = gql`
 `;
 
 
+
+export const UPDATE_MEMBER = gql`
+  mutation updateMember($memberId: ID!, $memberInput: MemberInput!) {
+    updateMember(memberId: $memberId, memberInput: $memberInput) {
+      _id
+      memberNumber
+      firstName
+      lastName
+    }
+  }
+`;
+
 // export const ADD_FAMILY =gql`
 
 // mutation addfamily($input: FamilyInput!) {
