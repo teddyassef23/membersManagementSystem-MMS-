@@ -4,10 +4,14 @@ import { GET_MEMBER } from '../utils/queries';
 import { UPDATE_MEMBER } from '../utils/mutations';
 import DatePick from '../components/Date';
 import { Flex, Input } from 'antd';
+import { useNavigate } from 'react-router-dom';
+
 
 const { TextArea } = Input;
 
 const Payment = () => {
+    const navigateTo = useNavigate();
+
     const [paymentInfo, setPaymentInfo] = useState({
         payFor: '',
         amount: '',
@@ -64,6 +68,9 @@ const Payment = () => {
                 amount: '',
                 memberId: '',
             });
+
+            navigateTo('/members')
+
         } catch (error) {
             console.error(error);
         }
