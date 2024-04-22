@@ -42,33 +42,7 @@ export const GET_MEMBER = gql`
       secondaryPhone
       paymentFlag
       created_date
-      addresses {
-        street
-        street2
-        city
-        state
-        zip
-        country
-        created_date
-      }
-      memberFamilies {
-        id
-        firstName
-        middleName
-        lastName
-        baptismalName
-        gender
-        relationShip
-        createdDate
-      }
-      payment {
-        amount
-        month
-        year
-        paymentMethod
-        paymentDate
-        createdDate
-      }
+  
     }
   }
 `;

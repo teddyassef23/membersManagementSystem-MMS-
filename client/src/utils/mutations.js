@@ -36,10 +36,16 @@ export const UPDATE_MEMBER = gql`
       memberNumber
       firstName
       lastName
+      baptismalName
+      gender
+      startDate
+      endDate
+      email
+      primaryPhone
+      secondaryPhone
     }
   }
 `;
-
 // export const ADD_FAMILY =gql`
 
 // mutation addfamily($input: FamilyInput!) {

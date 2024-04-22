@@ -3,12 +3,15 @@ import { useQuery, useMutation } from '@apollo/client';
 import { GET_MEMBER } from '../../utils/queries';
 import { UPDATE_MEMBER } from '../../utils/mutations';
 import { Divider } from 'antd';
+import { useParams } from 'react-router-dom'; // Import useParams hook
 
-function EditMemberForm({ memberId }) {
-  const [memberData, setMemberData] = useState({});
-  const { loading, error, data } = useQuery(GET_MEMBER, {
-    variables: { memberId },
-  });
+
+function EditMemberForm() {
+    const { memberId } = useParams(); // Fetch memberId from URL params
+    const [memberData, setMemberData] = useState({});
+    const { loading, error, data } = useQuery(GET_MEMBER, {
+      variables: { memberId }, // Pass memberId as a variable to the query
+    });
   const [updateMember] = useMutation(UPDATE_MEMBER);
 
   useEffect(() => {
@@ -20,24 +23,31 @@ function EditMemberForm({ memberId }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Remove __typename from memberData before sending
+      const { __typename,_id,created_date, ...memberInputWithoutTypename } = memberData;
+      
       await updateMember({
         variables: {
           memberId,
-          memberInput: memberData,
+          memberInput: memberInputWithoutTypename, // Send memberInput without __typename
         },
       });
     } catch (error) {
       console.error(error);
     }
   };
-
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setMemberData({
-      ...memberData,
-      [name]: value,
-    });
+    // Exclude __typename and specific fields from the updated memberData object
+    const updatedMemberData = { ...memberData };
+    console.log(updatedMemberData)
+    if (name !== '__typename' && name !== 'Memmber' && name !== 'memberFamilies' && name !== 'payment') {
+      updatedMemberData[name] = value;
+    }
+    setMemberData(updatedMemberData);
   };
+  
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;

@@ -120,7 +120,7 @@ const Member = () => {
         key: 'action',
         render: (text, record) => (
           <Space size="middle">
-            <Link to={`/edit/${record._id}`}>Edit</Link>
+            <Link to={`/edit-member/${record._id}`}>Edit</Link>
         <Link to={`/delete/${record._id}`}>Delete</Link>
 
           </Space>
