@@ -8,8 +8,10 @@ import Login from './pages/Login';
 import ErrorPage from './pages/ErrorPage';
 import Member from './pages/member/index.jsx';
 import MemberForm from './pages/member/Form.jsx';
+import EditMemberForm from './pages/member/EditMemberForm.jsx';
 // import PaymentElection from './pages/PaymentElection';
  import PaymentFinal from './components/Paymentfinal/PaymentFinal';
+import Payment from './pages/Payment.jsx';
 // import AddFamily from './pages/family/AddFamily.jsx';
 
 const router = createBrowserRouter([
@@ -36,13 +38,16 @@ const router = createBrowserRouter([
         path: '/add-member',
         element: <MemberForm />
       },
+    { path:"/edit-member/:memberId",
+     element: <EditMemberForm />},
+
       //  {
       //    path: '/add-member/add-family',
       //    element: <AddFamily />
       //  },
        {
         path: '/payment',
-         element: <PaymentFinal />
+         element: <Payment />
        },
       // {
       //   path: '/paymentElection',

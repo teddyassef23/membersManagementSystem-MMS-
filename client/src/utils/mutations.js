@@ -24,6 +24,28 @@ export const ADD_USER = gql`
   }
 `;
 
+
+
+
+
+
+export const UPDATE_MEMBER = gql`
+  mutation updateMember($memberId: ID!, $memberInput: MemberInput!) {
+    updateMember(memberId: $memberId, memberInput: $memberInput) {
+      _id
+      memberNumber
+      firstName
+      lastName
+      baptismalName
+      gender
+      startDate
+      endDate
+      email
+      primaryPhone
+      secondaryPhone
+    }
+  }
+`;
 // export const ADD_FAMILY =gql`
 
 // mutation addfamily($input: FamilyInput!) {

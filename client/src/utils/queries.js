@@ -26,6 +26,26 @@ export const QUERY_THOUGHTS = gql`
   }
 `;
 
+export const GET_MEMBER = gql`
+  query getMember($memberId: ID!) {
+    getMember(memberId: $memberId) {
+      _id
+      memberNumber
+      firstName
+      lastName
+      baptismalName
+      gender
+      startDate
+      endDate
+      email
+      primaryPhone
+      secondaryPhone
+      paymentFlag
+      created_date
+  
+    }
+  }
+`;
 export const QUERY_SINGLE_THOUGHT = gql`
   query getSingleThought($thoughtId: ID!) {
     thought(thoughtId: $thoughtId) {
