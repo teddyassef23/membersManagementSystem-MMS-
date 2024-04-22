@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 import { DollarCircleOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme , Table, Row, Col, Space} from 'antd';
-import MemberForm from './Form';
-import Detail from '../../components/Accordion.jsx';
+// import MemberForm from './Form';
+// import Detail from '../../components/Accordion.jsx';
 import './style.css';
 import { useQuery, gql } from '@apollo/client'; 
 const { Content, Footer, Sider } = Layout;
