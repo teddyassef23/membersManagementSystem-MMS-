@@ -15,12 +15,10 @@
   "license": "ISC",
   "dependencies": {
     "@ant-design/icons": "^5.3.6",
-    "vite": "^4.4.5",
     "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    
     "antd": "^5.16.1",
     "apollo-server-express": "^3.13.0",
     "bcrypt": "^5.1.1",
@@ -30,8 +28,10 @@
     "framer-motion": "^11.0.25",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.0.2",
+    "react-icons": "^5.1.0",
     "react-router-dom": "^6.22.3",
-    "react-spring": "^9.7.3"
+    "react-spring": "^9.7.3",
+    "vite": "^4.4.5"
   },
   "devDependencies": {
     "concurrently": "^8.2.0",
