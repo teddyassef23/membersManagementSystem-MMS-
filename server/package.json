@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-     "watch": "nodemon",
+     "watch": "watch -server.js",
     "seed": "node seeders/seed.js"
   },
   "dependencies": {
@@ -15,9 +15,8 @@
      "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.0.2",
     "express": "^4.17.1",
+    "vite": "^4.4.5"
     
-
-
   },
   "author": "",
   "license": "ISC",
