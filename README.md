@@ -30,6 +30,14 @@
   This repo is a pre-production proof of concept for St. Michael's Church wherein we have a signup, login, main page, and payment page. The payment page does not save or process payment information to protect security at this time.
 
   
+ ## screenshot
+
+![image.](./client/src/assets/Snip%20-%20Members%20Management%20and%2012%20more%20pages%20-%20Personal%20-%20Microsoft%20Edge.png)
+
+
+![image.](./client/src/assets/Snip%20-%20Members%20Management%20and%2013%20more%20pages%20-%20Personal%20-%20Microsoft%20Edge.png)
+
+![image.](./client/src/assets/Snip%20-%20Members%20Management%20and%204%20more%20pages%20-%20Personal%20-%20Microsoft%20Edge.png)
 
   ## Contributors
 
