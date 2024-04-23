@@ -17,13 +17,12 @@ body {
     margin-top: -20px;
 }
 .container {
-    display: grid;
+    display: flex;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   
 
 
     display: flexbox;
-    flex-wrap: wrap;
     flex-direction: row;
     text-align: right;
     justify-content: start;
